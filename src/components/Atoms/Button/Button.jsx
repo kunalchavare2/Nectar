@@ -1,50 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './button.css';
-
+import React from "react";
+import PropTypes from "prop-types";
+import { StyledButton } from "./button.styled";
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({
+  CartIcon,
+  label,
+  transparent,
+  backgroundColor,
+  ...props
+}) => {
+  // const CartIconClass = CartIcon ? `storybook-button--${CartIcon}` : '';
+  const isIconButton = Boolean(CartIcon);
   return (
-    <button
+    <StyledButton
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
+      className={[
+        "storybook-button",
+        isIconButton && "storybook-button--icon",
+      ].join(" ")}
+      transparent={transparent}
+      backgroundColor={backgroundColor}
+      small={props.small || isIconButton}
       {...props}
     >
-      {label}
-    </button>
+      {isIconButton ? CartIcon : label}
+    </StyledButton>
   );
 };
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
-  backgroundColor: PropTypes.string,
-  /**
-   * How large should the button be?
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Button contents
-   */
+  icon: PropTypes.string,
   label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
-  onClick: PropTypes.func,
+  transparent: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  small: PropTypes.bool,
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
-  size: 'medium',
-  onClick: undefined,
+  transparent: false,
+  backgroundColor: "#53B175", // Set a default background color
+  small: false,
 };
+
+export default Button;
