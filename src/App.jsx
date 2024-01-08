@@ -1,14 +1,12 @@
 import "./App.css";
-import InputType from "./components/Atoms/Input/Input";
 import GlobalStyles from "./styles/globalStyles";
+import Theme from "./Theme/Theme";
 
 function App() {
   return (
-    <>
+    <Theme>
       <GlobalStyles />
-      <p>hello world</p>
-      <InputType />
-    </>
+    </Theme>
   );
 }
 

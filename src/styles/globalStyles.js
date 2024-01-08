@@ -8,6 +8,11 @@ ${reset}
 
 /* To added the required font styles */
 ${fontFaces}
+
+body{
+    transition: all 0.25s linear;
+    background-color:${(props) => props.theme.body}
+}
 `;
 
 export default GlobalStyles;
