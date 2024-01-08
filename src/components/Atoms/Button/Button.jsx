@@ -1,18 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledButton } from "./button.styled";
+import { StyledButton,CheckoutContainer,PriceSpan } from "./button.styled";
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({
   CartIcon,
   label,
+  disabled, 
+  onClick,
+  price,
   transparent,
   backgroundColor,
   ...props
-}) => {
-  // const CartIconClass = CartIcon ? `storybook-button--${CartIcon}` : '';
+}) => { 
   const isIconButton = Boolean(CartIcon);
+ const handlleClick=() =>{
+  if(!disabled && onClick) {
+    onClick();
+  }
+ }
   return (
     <StyledButton
       type="button"
@@ -23,9 +30,18 @@ export const Button = ({
       transparent={transparent}
       backgroundColor={backgroundColor}
       small={props.small || isIconButton}
+      disabled={disabled}
+      onClick={handlleClick}
       {...props}
     >
-      {isIconButton ? CartIcon : label}
+      {isIconButton ? CartIcon : null}
+      {label && price && (
+        <CheckoutContainer>
+          <span>{label}</span>
+          <PriceSpan>{price}</PriceSpan>
+        </CheckoutContainer>
+      )}
+      {label && !price && label}
     </StyledButton>
   );
 };
@@ -36,12 +52,16 @@ Button.propTypes = {
   transparent: PropTypes.bool,
   backgroundColor: PropTypes.string,
   small: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
   transparent: false,
   backgroundColor: "#53B175", // Set a default background color
   small: false,
+  disabled :false,
+  onClick:undefined,
+  price:null,
 };
 
 export default Button;
