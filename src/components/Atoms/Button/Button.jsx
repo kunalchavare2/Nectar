@@ -21,6 +21,7 @@ export const Button = ({
   }
  }
   return (
+     
     <StyledButton
       type="button"
       className={[
@@ -33,6 +34,7 @@ export const Button = ({
       disabled={disabled}
       onClick={handlleClick}
       {...props}
+      
     >
       {isIconButton ? CartIcon : null}
       {label && price && (
@@ -42,7 +44,8 @@ export const Button = ({
         </CheckoutContainer>
       )}
       {label && !price && label}
-    </StyledButton>
+    </StyledButton> 
+   
   );
 };
 

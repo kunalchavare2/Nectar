@@ -6,7 +6,6 @@ export const CheckoutContainer = styled.div`
   margin-left: 5px; 
 `;
 export const PriceSpan = styled.div`
-  
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -16,8 +15,7 @@ export const PriceSpan = styled.div`
   padding: 2px 5px; 
   `; 
 export const  StyledButton = styled.button`
-
-  color: #FFF9FF;
+  color: #FFF;
   font-size: 18px;
   font-weight: 600;
   line-height: 18px;
@@ -30,17 +28,17 @@ export const  StyledButton = styled.button`
   flex-shrink: 0;
  
   ${(props) =>
-    props. transparent &&
+    props.transparent &&
     css`
-      background-color:#FFF9FF;
-      color: #53B175 ;  
-      border: 1px solid rgba(0, 0, 0, 0.3);
+      background-color:#FFF;
+      color: #53B175;  
+      border: 1px solid rgba(226, 226, 226,1);
     `}
 
   /* Styles for icon buttons */
   &.storybook-button--icon {
-    width:  45.67px  ; 
-    height:  45.67px  ;
+    width:  45.67px; 
+    height:  45.67px;
     display: flex;
     align-items: center;
     justify-content: center; 
@@ -53,10 +51,9 @@ export const  StyledButton = styled.button`
       background-color: ${props.backgroundColor};
     `}
     ${(props) =>
-      props. disabled &&
+      props.disabled &&
       css`
         cursor:not-allowed; 
         color:grey;
-      `}
-  
+      `} 
 `;
