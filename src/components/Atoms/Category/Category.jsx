@@ -2,9 +2,14 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { StyledCard,Horizon,HorizonImage,HorizonText,Card,CardText,CardImage } from "./Category.styled";
 
-const Category = ({ imgSrc, text,isCard,backgroundColor } ) => { 
+const Category = ({ imgSrc, text,isCard,backgroundColor,onClick } ) => {
+    const HandleClick =() => {
+        if (onClick) {
+            onClick();
+        }
+    } 
     return (
-        <StyledCard isCard={isCard}  >
+        <StyledCard isCard={isCard} onClick={HandleClick} >
         {isCard ? (
             <>
                <Card  backgroundColor={backgroundColor}> 
@@ -30,9 +35,12 @@ Category.propTypes = {
     text: PropTypes.string.isRequired,
     isCard: PropTypes.bool.isRequired,
     backgroundColor: PropTypes.string,
+    onClick:PropTypes.func,
 }
 Category.defaultProps = {
-    isCard:false, 
-    backgroundColor:'rgba(247, 165, 147, 0.25)',
+    isCard:true, 
+    backgroundColor:'#B7DFF5',
+   
+ 
 }
 export default Category;

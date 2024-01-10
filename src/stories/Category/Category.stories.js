@@ -13,13 +13,10 @@ export default {
     backgroundColor: { control: "color" },
     isCard: { control: "boolean" },
   },
-};
+}; 
   
-  
-export const Cardvertical = (args) => (
-  <Category {...args} imgSrc={bakery} text="bakery" isCard={true}/>
+export const Card  = (args) => (
+  <Category {...args} imgSrc={bakery} text="bakery"  />
 );
 
-export const Cardhorizon = (args) => (
-  <Category {...args} imgSrc={milk} text="milk" isCard={false} />
-);
+ 
