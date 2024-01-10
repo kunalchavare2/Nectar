@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button } from "../../components/Atoms/Button/Button"; 
-import { PriceSpan } from '../../components/Atoms/Button/button.styled';
-import { CheckoutContainer } from '../../components/Atoms/Button/button.styled';
+import { Button } from "../../components/Atoms/Button/Button";  
+import { CheckoutContainer, PriceSpan } from '../../components/Atoms/Button/button.styled';
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
   title: "Example/Button",

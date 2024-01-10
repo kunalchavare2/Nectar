@@ -29,8 +29,7 @@ export const Button = ({
         isIconButton && "storybook-button--icon",
       ].join(" ")}
       transparent={transparent}
-      backgroundColor={backgroundColor}
-      small={props.small || isIconButton}
+      backgroundColor={backgroundColor} 
       disabled={disabled}
       onClick={handlleClick}
       {...props}

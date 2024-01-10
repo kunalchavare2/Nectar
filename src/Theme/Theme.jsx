@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { ThemeData } from "./ThemeData";
-import { PropTypes } from "prop-types";
+import { ThemeData } from "./ThemeData"; 
 
 export const ThemeDispatcher = createContext("");
 
