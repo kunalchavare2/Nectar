@@ -7,8 +7,9 @@ const darkTheme = {
 };
 
 const lightTheme = {
-  primary: color.black,
-  secondary: color.white,
+  primary: color.blue500,
+  secondary: color.gray100,
+  accent: color.green100,
   body: color.white,
 };
 
