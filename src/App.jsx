@@ -1,8 +1,7 @@
 import "./App.css";
 import ProductCard from "./components/Molecules/ProductCard/ProductCard";
 import GlobalStyles from "./styles/globalStyles";
-import Theme from "./Theme/Theme";
-
+import Theme from "./Theme/Theme"; 
 function App() {
   return (
     <Theme>
