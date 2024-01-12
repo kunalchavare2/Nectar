@@ -5,7 +5,7 @@ import {
   fontSize,
   fontWeight,
 } from "../../../utils/constant/style-const";
-
+ 
 const Card = styled.div`
   color: ${(props) => props.theme.primary};
   border-radius: 1.125rem;
@@ -13,18 +13,26 @@ const Card = styled.div`
     props.style && (props.style.width ? props.style.width : "fit-content")};
   border: 1px solid ${color.gray100};
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   ${(props) => layoutStyle(props.layout)}
-
+ 
   .card-img {
-    width: 100px;
+    width: 70%;
   }
-
+ 
   img {
     max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    aspect-ratio: 3/3;
   }
-
+ 
+  .card-content {
+    align-self: stretch;
+  }
+ 
   .card-title {
     color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
@@ -34,7 +42,7 @@ const Card = styled.div`
     letter-spacing: 0.00625rem;
     text-align: left;
   }
-
+ 
   .card-quantity {
     color: ${(props) => props.theme.secondary};
     font-size: ${fontSize.captionRegular};
@@ -45,13 +53,13 @@ const Card = styled.div`
     margin-top: 5px;
     margin-bottom: 20px;
   }
-
+ 
   .card-priceWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
+ 
   .card-price {
     color: #181725;
     font-size: ${fontSize.titleSmall};
@@ -61,9 +69,9 @@ const Card = styled.div`
     letter-spacing: 0.00625rem;
   }
 `;
-
+ 
 export default Card;
-
+ 
 function layoutStyle(layout) {
   if (layout === "cart") {
     return css`
@@ -74,11 +82,11 @@ function layoutStyle(layout) {
       border-left: none;
       border-right: none;
       border-radius: 0;
-
+ 
       .card-btn {
         display: none;
       }
-
+ 
       .card-quantity-btn {
         display: flex;
         align-items: center;
@@ -104,7 +112,7 @@ function layoutStyle(layout) {
       display: flex;
       flex-direction: row;
       gap: 1rem;
-
+ 
       .card-content {
         display: flex;
         align-items: center;
