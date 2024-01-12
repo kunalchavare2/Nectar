@@ -13,12 +13,8 @@ export default {
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    layout: "card",
-    style: { control: "object" },
-    imgUrl: "https://i.ibb.co/cyx6bMC/Egg-basket.png",
-    productLabel: "Egg Chicken Red",
-    productQuantity: "4pcs",
-    productPrice: "$1.99",
+    openCardHandler: { action: "clicked" },
+    deleteHandler: { action: "clicked" },
   },
 };
 const Template = (args) => <ProductCard {...args} />;
@@ -41,6 +37,9 @@ Cart.args = {
   productLabel: "Egg Chicken Red",
   productQuantity: "4pcs",
   productPrice: "$1.99",
+  quantityHandler: (v) => {
+    console.log(v);
+  },
 };
 
 export const Favorurite = Template.bind({});
