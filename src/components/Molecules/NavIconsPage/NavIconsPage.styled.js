@@ -8,4 +8,5 @@ background: #FFF;
 box-shadow: 0px -12px 37px 0px rgba(230, 235, 243, 0.50);
 display: flex;
 gap:1rem;
+align-items:center;
 `
