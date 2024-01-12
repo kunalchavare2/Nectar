@@ -9,7 +9,13 @@ function App() {
     <>
      <Theme>
       <GlobalStyles />
-      <ProductCard layout="favorurite" />
+      <ProductCard
+        layout="favorurite"
+        style={{ width: "300px" }}
+        quantityHandler={(v) => {
+          console.log(v);
+        }}
+      />
     </Theme> 
     <NavIconsPage/>
     </>
