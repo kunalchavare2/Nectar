@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from "react";
-import styled from "styled-components";
+import React, {useEffect, useState} from "react"; 
 import PropTypes from 'prop-types';
 import cross from '../../../assets/icons/cross.svg';
 import search from '../../../assets/icons/search.svg';

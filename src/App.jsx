@@ -3,7 +3,7 @@ import "./App.css";
 import ProductCard from "./components/Molecules/ProductCard/ProductCard";
 import GlobalStyles from "./styles/globalStyles";
 import Theme from "./Theme/Theme";
-import NavIconsPage from "./components/Molecules/NavIconsPage/NavIconsPage";
+import NavIconsPage from "./components/Molecules/NavIconsPage/NavIconsPage"; 
 function App() {
   return (
     <>
@@ -17,7 +17,7 @@ function App() {
         }}
       />
     </Theme> 
-    <NavIconsPage/>
+    <NavIconsPage/> 
     </>
    
 

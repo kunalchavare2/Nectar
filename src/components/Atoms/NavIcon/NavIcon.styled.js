@@ -8,6 +8,9 @@ export const IconContainer=styled.div`
     height: 24px;
     flex-shrink: 0; 
 }
+.icon {
+    font-size:23px;
+}
 p{
 color: #181725;
 text-align: center;  
