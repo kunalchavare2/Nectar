@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import {
   color,
@@ -13,16 +12,23 @@ const Card = styled.div`
     props.style && (props.style.width ? props.style.width : "fit-content")};
   border: 1px solid ${color.gray100};
   padding: 1rem;
-  ${(props) => layoutStyle(props.layout)}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .card-img {
-    width: 100px;
+    width: 70%;
   }
 
   img {
     max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    aspect-ratio: 3/3;
+  }
+
+  .card-content {
+    align-self: stretch;
   }
 
   .card-title {
@@ -60,6 +66,8 @@ const Card = styled.div`
     line-height: 1.125rem;
     letter-spacing: 0.00625rem;
   }
+
+  ${(props) => layoutStyle(props.layout)}
 `;
 
 export default Card;
@@ -73,10 +81,15 @@ function layoutStyle(layout) {
       position: relative;
       border-left: none;
       border-right: none;
+      border-top: none;
       border-radius: 0;
 
       .card-btn {
         display: none;
+      }
+
+      .card-img {
+        width: 30%;
       }
 
       .card-quantity-btn {
