@@ -4,37 +4,37 @@
       "symbol": "\u0024",
       "valueToDoller": 1
     },
-    "rupee": {
-      "symbol": "\u20B9",
-      "valueToDoller": 83.03
+    "rupee":{
+        "symbol": "\u20B9",
+        "valueToDoller": 83.03
     }
   },
-  "categories": [
-    {
+  "categories": {
+    "Beverages": {
       "lable": "Beverages",
       "image": "https://i.ibb.co/jk2zcLf/Beverages.png"
     },
-    {
+    "Dairy&Eggs": {
       "lable": "Dairy & Eggs",
       "image": "https://i.ibb.co/FzH3BNt/Dairy-Eggs.png"
     },
-    {
+    "FrashF&V": {
       "lable": "Frash Fruits & Vegetable",
       "image": "https://i.ibb.co/XDhm5xG/Frash-Fruits-Vegetable.png"
     },
-    {
+    "Meat&Fish": {
       "lable": "Meat & Fish",
       "image": "https://i.ibb.co/KrM79VG/Meat-Fish.png"
     },
-    {
+    "Bakery&Snacks": {
       "lable": "Bakery & Snacks",
       "image": "https://i.ibb.co/7GTH5wG/Bakery-Snacks.png"
     },
-    {
+    "CookingOil&Ghee": {
       "lable": "Cooking Oil & Ghee",
       "image": "https://i.ibb.co/qx4HwSd/Cooking-Oil-Ghee.png"
     }
-  ],
+  },
   "products": [
     {
       "id": 1,

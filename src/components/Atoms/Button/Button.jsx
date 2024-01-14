@@ -15,9 +15,9 @@ export const Button = ({
   ...props
 }) => {
   const isIconButton = Boolean(icon);
-  const handlleClick = () => {
+  const handlleClick = (ev) => {
     if (!disabled && onClick) {
-      onClick();
+      onClick(ev);
     }
   };
   return (
@@ -52,6 +52,8 @@ Button.propTypes = {
   backgroundColor: PropTypes.string,
   disabled: PropTypes.bool,
 };
+
+const product = 
 
 Button.defaultProps = {
   transparent: false,
