@@ -5,7 +5,8 @@ export const Search = styled.div`
     display:inline-flex;
     border-radius:15px;
     align-items:center;
-    position:relative
+    position:relative;
+    width:85%;
 `;
 export const Inputbar = styled.input`
     border:none;

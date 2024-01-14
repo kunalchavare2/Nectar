@@ -14,9 +14,10 @@ import {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   padding: 1rem;
+  margin-left: 20%;
 `;
 
 function App() {
@@ -47,7 +48,8 @@ function App() {
   };
 
   return (
-    <Theme>
+    
+     <Theme>
       <GlobalStyles />
       <div>{cart.cartCount}</div>
       <div>{console.log(cart)}</div>

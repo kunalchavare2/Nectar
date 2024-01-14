@@ -15,7 +15,6 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   .card-img {
     width: 70%;
   }
@@ -31,6 +30,14 @@ const Card = styled.div`
     align-self: stretch;
   }
 
+  .card-content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
   .card-title {
     color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
@@ -39,6 +46,13 @@ const Card = styled.div`
     line-height: 1.125rem;
     letter-spacing: 0.00625rem;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 100px;
   }
 
   .card-quantity {
@@ -49,7 +63,7 @@ const Card = styled.div`
     line-height: 1.125rem;
     text-align: left;
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .card-priceWrapper {
