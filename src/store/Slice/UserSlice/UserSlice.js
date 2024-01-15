@@ -10,6 +10,7 @@ const initialState = {
   },
 };
 
+
 const UserSlice = createSlice({
   name: "user",
   initialState: initialState,
@@ -20,6 +21,7 @@ const UserSlice = createSlice({
       const cartItems = [...current(state.cart.cartItems)];
 
       const item = cartItems.find((item) => item.id === action.payload.id);
+
       if (!item) {
         state.cart.cartItems.push(action.payload);
         state.cart.cartCount = state.cart.cartItems.length;
@@ -27,6 +29,7 @@ const UserSlice = createSlice({
     },
     // To remove the element from cart items
     removeFromCart: (state, action) => {
+      console.log(action);
       // Getting current state cart items
       const cartItems = [...current(state.cart.cartItems)];
 
@@ -43,6 +46,7 @@ const UserSlice = createSlice({
     },
     // To update the quantity of an item in cart
     updateCartItemQuantity: (state, action) => {
+   
       // Getting current state cart items
       const cartItems = [...current(state.cart.cartItems)];
 
