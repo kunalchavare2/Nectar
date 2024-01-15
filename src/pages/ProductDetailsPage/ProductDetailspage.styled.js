@@ -9,7 +9,9 @@ padding:13px;
 export const ProductDetailPage = styled.div `
     width:90%;
     margin:auto;
-    text-align:left;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 `;
 export const Price = styled.span ` 
 color: #181725;
@@ -18,14 +20,13 @@ font-size:1.5rem;
 export const ProductImage = styled.img `
     width:100%;
     max-width:330px;
-
-
 `;
 
 // export const productHeading
 export const ProductCountPrice = styled.div`
     display:flex;
     justify-content:space-between;
+    align-self:stretch;
     margin:10px 0;
     text-align:left;
     align-items:center;
@@ -35,8 +36,8 @@ export const ProductHeadingfav = styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
+    align-self:stretch;
     margin:10px 0;
-    text-align:left;
 `;
 
 export const ProductCount = styled.div`
@@ -45,11 +46,12 @@ export const ProductCount = styled.div`
 `;
 
 export const ProductDescription = styled.div`
-    text-align:left;
     display:flex;
     flex-direction: column;
     gap:7px;
     margin:10px 0;
+    align-self:stretch;
+    text-align:left;
 `;
 export const RegHeart = styled(FaRegHeart)`
     font-size:1rem;
@@ -75,4 +77,5 @@ font-weight: 500;
 color:rgba(83, 177, 117, 0.70);
 background: rgba(83, 177, 117, 0.10);
 margin:10px 0;
+align-self:flex-start;
 `;

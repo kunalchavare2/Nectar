@@ -1,11 +1,10 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import {
   color,
   fontSize,
   fontWeight,
 } from "../../../utils/constant/style-const";
- 
+
 const Card = styled.div`
   color: ${(props) => props.theme.primary};
   border-radius: 1.125rem;
@@ -16,23 +15,29 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  ${(props) => layoutStyle(props.layout)}
- 
   .card-img {
     width: 70%;
   }
- 
+
   img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
     aspect-ratio: 3/3;
   }
- 
+
   .card-content {
     align-self: stretch;
   }
- 
+
+  .card-content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
   .card-title {
     color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
@@ -41,8 +46,15 @@ const Card = styled.div`
     line-height: 1.125rem;
     letter-spacing: 0.00625rem;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 100px;
   }
- 
+
   .card-quantity {
     color: ${(props) => props.theme.secondary};
     font-size: ${fontSize.captionRegular};
@@ -51,15 +63,15 @@ const Card = styled.div`
     line-height: 1.125rem;
     text-align: left;
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
- 
+
   .card-priceWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
- 
+
   .card-price {
     color: #181725;
     font-size: ${fontSize.titleSmall};
@@ -68,10 +80,12 @@ const Card = styled.div`
     line-height: 1.125rem;
     letter-spacing: 0.00625rem;
   }
+
+  ${(props) => layoutStyle(props.layout)}
 `;
- 
+
 export default Card;
- 
+
 function layoutStyle(layout) {
   if (layout === "cart") {
     return css`
@@ -81,12 +95,17 @@ function layoutStyle(layout) {
       position: relative;
       border-left: none;
       border-right: none;
+      border-top: none;
       border-radius: 0;
- 
+
       .card-btn {
         display: none;
       }
- 
+
+      .card-img {
+        width: 30%;
+      }
+
       .card-quantity-btn {
         display: flex;
         align-items: center;
@@ -112,7 +131,7 @@ function layoutStyle(layout) {
       display: flex;
       flex-direction: row;
       gap: 1rem;
- 
+
       .card-content {
         display: flex;
         align-items: center;
