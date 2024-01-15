@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./ProductCard.styled";
 import PropTypes from "prop-types";
 import Button from "../../Atoms/Button/Button";
@@ -7,40 +7,36 @@ import { IoClose } from "react-icons/io5";
 
 const ProductCard = ({
   layout,
-  imgUrl,
-  productLabel,
-  productQuantity,
-  productPrice,
+  productItem,
   openCardHandler,
-  deleteHandler,
+  removeHandler,
   noOfItems,
   qunatityHandler,
   addCartHandler,
   ...props
 }) => {
-  const [noOfItemsVal, setNoOfItemsVal] = useState(noOfItems);
+  const { id, title, price, quantity, description, category, image } =
+    productItem;
 
-  const changeQunatityHandler = (value) => {
-    if (value == "add") {
-      setNoOfItemsVal((preValue) => preValue + 1);
+  const changeQunatityHandler = (productId, action) => {
+    if (action === "add") {
+      const newValue = noOfItems + 1;
+      qunatityHandler(productId, newValue);
     } else {
-      setNoOfItemsVal((preValue) => (preValue > 1 ? preValue - 1 : 1));
-    }
-
-    if (qunatityHandler) {
-      qunatityHandler(noOfItemsVal);
+      const newValue = noOfItems > 1 ? noOfItems - 1 : 1;
+      qunatityHandler(productId, newValue);
     }
   };
 
   return (
     <Card layout={layout} {...props} onClick={openCardHandler}>
       <div className={"card-img"}>
-        <img src={imgUrl} alt={""} />
+        <img src={image} alt={title} />
       </div>
       <div className="card-content">
         <div className="card-titleWrapper">
-          <div className="card-title">{productLabel}</div>
-          <div className="card-quantity">{productQuantity}</div>
+          <div className="card-title">{title}</div>
+          <div className="card-quantity">{quantity}</div>
         </div>
         <div className="card-priceWrapper">
           {layout === "cart" && (
@@ -50,33 +46,36 @@ const ProductCard = ({
                 transparent={true}
                 small={true}
                 id="minus-quantity"
-                disabled={noOfItemsVal === 1}
-                onClick={() => changeQunatityHandler("minus")}
+                disabled={noOfItems === 1}
+                onClick={() => changeQunatityHandler(id, "minus")}
               />
-              <div className="card-quantity-count">{noOfItemsVal}</div>
+              <div className="card-quantity-count">{noOfItems}</div>
               <Button
                 icon={<FaPlus />}
                 transparent={true}
                 small={true}
                 id="add-quantity"
-                onClick={() => changeQunatityHandler("add")}
+                onClick={() => changeQunatityHandler(id, "add")}
               />
             </div>
           )}
-          <div className="card-price">{productPrice}</div>
+          <div className="card-price">{price}</div>
           {layout === "card" && (
             <div className="card-btn">
               <Button
                 label=""
                 icon={<FaPlus />}
                 transparent={false}
-                onClick={addCartHandler}
+                onClick={(ev) => addCartHandler(ev, id)}
               />
             </div>
           )}
         </div>
         {layout === "cart" && (
-          <button className="card-close-btn" onClick={deleteHandler}>
+          <button
+            className="card-close-btn"
+            onClick={(ev) => removeHandler(ev, id)}
+          >
             <IoClose />
           </button>
         )}
@@ -88,14 +87,8 @@ const ProductCard = ({
 ProductCard.propTypes = {
   //  layout is to change card to different layout
   layout: PropTypes.oneOf(["card", "cart", "wishlist"]),
-  //  imgUrl is product image url
-  imgUrl: PropTypes.string.isRequired,
-  //   ProductLabel is product name
-  productLabel: PropTypes.string.isRequired,
-  //   ProductPrice is product price
-  productPrice: PropTypes.string.isRequired,
-  //   productQuantity is product quantity
-  productQuantity: PropTypes.string.isRequired,
+  // it contains all product details
+  productItem: PropTypes.object.isRequired,
   //   extra styling
   style: PropTypes.shape(PropTypes.object),
   // to provide value to quantity
@@ -103,20 +96,31 @@ ProductCard.propTypes = {
   // to handle on click on card
   openCardHandler: PropTypes.func,
   // to handle delete on click
-  deleteHandler: PropTypes.func,
+  removeHandler: PropTypes.func,
   // to handle quantity change
   qunatityHandler: PropTypes.func,
   // function to handle cart change
   addCartHandler: PropTypes.func,
 };
 
+const product = {
+  id: 1,
+  title: "Default",
+  price: 1.99,
+  quantity: "355ml",
+  description:
+    "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+  category: "Beverages",
+  image: "https://i.ibb.co/KhyT4yJ/Diet-Coke.png",
+  rating: {
+    rate: 3.9,
+    count: 120,
+  },
+};
+
 ProductCard.defaultProps = {
   layout: "card",
-  imgUrl: "https://i.ibb.co/cyx6bMC/Egg-basket.png",
-  productLabel: "Egg Chicken Red",
-  productQuantity: "4pcs",
-  productPrice: "$1.99",
-  noOfItems: 1,
+  productItem: product,
 };
 
 export default ProductCard;
