@@ -6,18 +6,16 @@ import Theme from "./Theme/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
-import {
-  addToCart,
-  removeFromCart,
-  updateCartItemQuantity,
-} from "./store/Slice/UserSlice/UserSlice";
+import { addToCart } from "./store/Slice/UserSlice/UserSlice";
+import { Link } from "react-router-dom";
+import { createQueryString } from "./utils/utility";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
   gap: 1rem;
   padding: 1rem;
-  margin-left: 20%;
+  // margin-left: 20%;
 `;
 
 function App() {
@@ -31,46 +29,21 @@ function App() {
   }, []);
 
   const addToCartHandler = (ev, id) => {
-    console.log(cart);
+    console.log(id);
     dispatch(addToCart({ id: id, quantity: 1 }));
     console.log(cart);
   };
 
-  const removeFromCartHandler = (ev, id) => {
-    console.log(id);
-    dispatch(removeFromCart(id));
-    console.log(cart);
-  };
-
-  const qunatityHandler = (id, quantity) => {
-    dispatch(updateCartItemQuantity({id, quantity}));
-    console.log(cart);
-  };
-
   return (
-    
-     <Theme>
+    <Theme>
       <GlobalStyles />
       <div>{cart.cartCount}</div>
-      <div>{console.log(cart)}</div>
-      <div>
-        {cart.cartItems.map((item) => {
-          const cartItem = product.products.find(
-            (productItem) => productItem.id === item.id
-          );
-          return (
-            <ProductCard
-              layout="cart"
-              key={cartItem.id}
-              style={{ width: "auto" }}
-              productItem={cartItem}
-              noOfItems={item.quantity}
-              removeHandler={removeFromCartHandler}
-              qunatityHandler={qunatityHandler}
-            />
-          );
-        })}
-      </div>
+
+      {!product.loading && (
+        <Link to={`/cart${createQueryString(product.products[10])}`}>
+          Open Cart
+        </Link>
+      )}
 
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}

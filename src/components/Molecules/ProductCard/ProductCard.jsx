@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Card from "./ProductCard.styled";
 import PropTypes from "prop-types";
 import Button from "../../Atoms/Button/Button";
@@ -15,8 +14,7 @@ const ProductCard = ({
   addCartHandler,
   ...props
 }) => {
-  const { id, title, price, quantity, description, category, image } =
-    productItem;
+  const { id, title, price, quantity, image } = productItem;
 
   const changeQunatityHandler = (productId, action) => {
     if (action === "add") {

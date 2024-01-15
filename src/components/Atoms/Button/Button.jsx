@@ -53,8 +53,6 @@ Button.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const product = 
-
 Button.defaultProps = {
   transparent: false,
   backgroundColor: "#53B175", // Set a default background color
