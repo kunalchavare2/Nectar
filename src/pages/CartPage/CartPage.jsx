@@ -9,6 +9,9 @@ import {
 import { useLocation } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { queryStringToObject } from "../../utils/utility";
+import Info from "../../components/Molecules/Info/Info";
+import emptyCart from "../../assets/images/empty-cart.svg";
+import InfoTypes from "../../components/Organisams/InfoTypes/InfoTypes";
 
 const CartPage = () => {
   const product = useSelector((state) => state.product);
@@ -57,6 +60,8 @@ const CartPage = () => {
   };
   return (
     <CartPageStyle>
+      {!cart.cartCount && <InfoTypes type="emptyCart" />}
+
       {cart.cartItems.map((item) => {
         const cartItem = product.products.find(
           (productItem) => productItem.id === item.id

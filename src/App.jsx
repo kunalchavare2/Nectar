@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./App.css";
+import "./App.styled.js";
 import ProductCard from "./components/Molecules/ProductCard/ProductCard";
 import GlobalStyles from "./styles/globalStyles";
 import Theme from "./Theme/Theme";
@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
 import { addToCart } from "./store/Slice/UserSlice/UserSlice";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { createQueryString } from "./utils/utility";
+import AppStyle from "./App.styled.js";
 
 const Grid = styled.div`
   display: grid;
@@ -25,7 +26,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    if (product.products.length === 0) {
+      dispatch(fetchProducts());
+    }
   }, []);
 
   const addToCartHandler = (ev, id) => {
@@ -35,12 +38,11 @@ function App() {
   };
 
   return (
-    <Theme>
-      <GlobalStyles />
+    <>
       <div>{cart.cartCount}</div>
 
       {!product.loading && (
-        <Link to={`/cart${createQueryString(product.products[10])}`}>
+        <Link to={`cart${createQueryString(product.products[10])}`}>
           Open Cart
         </Link>
       )}
@@ -62,7 +64,7 @@ function App() {
           })}
         </Grid>
       )}
-    </Theme>
+    </>
   );
 }
 
