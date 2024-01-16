@@ -11,6 +11,7 @@ import {
   removeFromCart,
   updateCartItemQuantity,
 } from "./store/Slice/UserSlice/UserSlice";
+import ProductListPage from "./pages/ProductListPage/ProductListPage";
 
 const Grid = styled.div`
   display: grid;
@@ -89,7 +90,9 @@ function App() {
           })}
         </Grid>
       )}
+      <ProductListPage/>
     </Theme>
+
   );
 }
 
