@@ -11,7 +11,7 @@ const HeadingTypes = styled.div`
                 return "1.125rem";
                 break;
             case 'large':
-                return "1.375rem";
+                return "1.5rem";
                 break;
             default:
                 return props.size;

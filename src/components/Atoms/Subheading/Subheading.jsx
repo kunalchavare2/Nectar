@@ -15,7 +15,7 @@ Subheading.propTypes = {
 }
 Subheading.defaultProps = {
     backgroundColor: null,
-    tcolor:'green',
+    tcolor:'#7C7C7C',
     type: 'small',
     label: 'coke',
 };

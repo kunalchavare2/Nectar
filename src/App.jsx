@@ -6,6 +6,7 @@ import Theme from "./Theme/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
+import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import {
   addToCart,
   removeFromCart,
@@ -15,10 +16,9 @@ import ProductListPage from "./pages/ProductListPage/ProductListPage";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   padding: 1rem;
-  margin-left: 20%;
 `;
 
 function App() {
@@ -44,13 +44,12 @@ function App() {
   };
 
   const qunatityHandler = (id, quantity) => {
-    dispatch(updateCartItemQuantity({id, quantity}));
+    dispatch(updateCartItemQuantity({ id, quantity }));
     console.log(cart);
   };
 
   return (
-    
-     <Theme>
+    <Theme>
       <GlobalStyles />
       <div>{cart.cartCount}</div>
       <div>{console.log(cart)}</div>
@@ -90,9 +89,14 @@ function App() {
           })}
         </Grid>
       )}
+      <ProductDetailsPage
+        productName="Eggs"
+        productDetails="Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet."
+        price="4.99"
+        itemCategory="Poultry"
+      />
       <ProductListPage/>
     </Theme>
-
   );
 }
 

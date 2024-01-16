@@ -15,7 +15,7 @@ Heading.propTypes = {
 }
 Heading.defaultProps = {
     backgroundColor: null,
-    tcolor:'green',
+    tcolor:'#181725',
     type: 'small',
     label: 'fruits',
 };

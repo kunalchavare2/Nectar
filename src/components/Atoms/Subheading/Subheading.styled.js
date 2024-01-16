@@ -5,13 +5,13 @@ const SubHeadingTypes = styled.div`
     font-size:${props=>{
         switch (props.size) {
             case 'small':
-                return "1rem";
+                return "0.81rem";
                 break;
             case 'medium':
-                return "1.125rem";
+                return "1rem";
                 break;
             case 'large':
-                return "1.375rem";
+                return "1.25rem";
                 break;
             default:
                 return props.size;
