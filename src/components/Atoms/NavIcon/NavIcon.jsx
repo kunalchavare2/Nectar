@@ -1,14 +1,16 @@
 import React from "react";
-import { IconContainer } from "./NavIcon.styled";
+import { CountStyle, IconContainer } from "./NavIcon.styled";
+import { Link, NavLink } from "react-router-dom";
 
-
-const NavIcon =({imgSrc,text})=> {
-return (
+const NavIcon = ({ icon, text, link, hideIcon = false, count }) => {
+  return (
     <IconContainer>
-        <div className="icon">{imgSrc}</div>
-        <p className="icon-text">{text}</p>
+      <NavLink to={link} className="link" activeClassName="active">
+        {!hideIcon && <div className="icon">{icon}</div>}
+        {text && <p className="icon-text">{text}</p>}
+        {count !== undefined && <CountStyle>{count}</CountStyle>}
+      </NavLink>
     </IconContainer>
-      
-)
-} 
+  );
+};
 export default NavIcon;

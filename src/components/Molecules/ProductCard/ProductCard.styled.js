@@ -20,8 +20,8 @@ const Card = styled.div`
   }
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     aspect-ratio: 3/3;
   }

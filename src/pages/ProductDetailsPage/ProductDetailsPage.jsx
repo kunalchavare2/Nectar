@@ -1,54 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Atoms/Button/Button";
 import Heading from "../../components/Atoms/Heading/Heading";
 import Subheading from "../../components/Atoms/Subheading/Subheading";
-import Eggbasket from '../../../src/assets/images/Egg-basket.png';
+import Eggbasket from "../../../src/assets/images/Egg-basket.png";
 import { FaMinus, FaPlus } from "react-icons/fa6";
-import {Quantity ,Price,ProductImage,ProductHeadingfav,ProductCountPrice,ProductDetailPage,ProductCount,ProductDescription,RegHeart,Heart,ProductHeading,Category} from './ProductDetailspage.styled';
+import {
+  Quantity,
+  Price,
+  ProductImage,
+  ProductHeadingfav,
+  ProductCountPrice,
+  ProductDetailPage,
+  ProductCount,
+  ProductDescription,
+  RegHeart,
+  Heart,
+  ProductHeading,
+  Category,
+} from "./ProductDetailspage.styled";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "./../../store/Slice/ProductSlice/ProductSlice";
+import {
+  addToWishList,
+  removeFromWishList,
+} from "../../store/Slice/UserSlice/UserSlice";
 
-const  ProductDetailsPage = ({productName,productDetails,price,itemCategory}) => {
-    const [quantity,setQuantity] =useState(1);
-    const [inFavourite, setInFavourite] = useState(false)
-    const count= (sign) => {     
-        // if quantity = 
-        setQuantity(sign === "plus" ? quantity+1 : quantity-1);
+const ProductDetailsPage = () => {
+  const [quantity, setQuantity] = useState(1);
+  const UserData = useSelector((state) => state.user);
+  const productId = useParams().id;
+  const { loading, products, error } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const isWishlisted = UserData.wishlist.wishlistItems.includes(productId);
+
+  const ProductDetails = products.find((prod) => prod.id === Number(productId));
+
+  const quantityHandler = (action) => {
+    // if quantity =
+    setQuantity(action === "plus" ? quantity + 1 : quantity - 1);
+  };
+
+  const addToWishlistHandler = () => {
+    if (!isWishlisted) {
+      dispatch(addToWishList(productId));
+    } else {
+      dispatch(removeFromWishList(productId));
     }
-    const favicon = () => {
-        setInFavourite(inFavourite ? false : true)
+  };
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
     }
-    return (
+  }, []);
+
+  return (
+    <>
+      {loading && <div>loading</div>}
+      {!loading && error && <div>error</div>}
+      {!loading && products.length && (
         <ProductDetailPage>
-            <ProductImage src={Eggbasket} alt="eggbasket" />
-            <ProductHeadingfav>
-                <ProductHeading>
-                    <Heading type ="large" label={productName}/>
-                    <Subheading type="medium" label="1kg,Price"/>
-                </ProductHeading>
-                {inFavourite ? <Heart onClick={favicon}/>:<RegHeart onClick={favicon} colorValue="#7a7a7a"/>}
-            </ProductHeadingfav> 
-            <Category>{itemCategory}</Category>
-            <ProductCountPrice>
-                <ProductCount>
-                    <Button
-                        icon={<FaMinus />}
-                        transparent={true}
-                        onClick={()=>count("minus")}>
-                    </Button>
-                    <Quantity>{quantity}</Quantity>
-                    <Button
-                        icon={<FaPlus />}
-                        transparent={false}
-                        onClick={()=>count("plus")} >
-                    </Button>
-                </ProductCount>
-                <Price>${price}</Price>
-            </ProductCountPrice>
-            <ProductDescription> 
-                <Heading type ="small" label="Product Details"/>
-                <Subheading type="small" label={productDetails}/>
-            </ProductDescription>
+          <ProductImage src={ProductDetails.image} alt="eggbasket" />
+          <ProductHeadingfav>
+            <ProductHeading>
+              <Heading type="large" label={ProductDetails.title} />
+              <Subheading type="medium" label={ProductDetails.quantity} />
+            </ProductHeading>
+            {isWishlisted ? (
+              <Heart onClick={addToWishlistHandler} />
+            ) : (
+              <RegHeart onClick={addToWishlistHandler} colorValue="#7a7a7a" />
+            )}
+          </ProductHeadingfav>
+          <Category>{ProductDetails.category}</Category>
+          <ProductCountPrice>
+            <ProductCount>
+              <Button
+                icon={<FaMinus />}
+                transparent={true}
+                onClick={() => quantityHandler("minus")}
+              />
+              <Quantity>{quantity}</Quantity>
+              <Button
+                icon={<FaPlus />}
+                transparent={false}
+                onClick={() => quantityHandler("plus")}
+              />
+            </ProductCount>
+            <Price>${ProductDetails.price}</Price>
+          </ProductCountPrice>
+          <ProductDescription>
+            <Heading type="small" label="Product Details" />
+            <Subheading type="small" label={ProductDetails.description} />
+          </ProductDescription>
         </ProductDetailPage>
-        
-    );
-}
+      )}
+    </>
+  );
+};
 export default ProductDetailsPage;

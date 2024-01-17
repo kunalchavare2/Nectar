@@ -1,20 +1,64 @@
 import React from "react";
 import { PageIconsContainer } from "./NavIconsPage.styled";
-import { CiShop } from "react-icons/ci";
-import { MdManageSearch } from "react-icons/md";
-import { IoCartOutline } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
-import { CiUser } from "react-icons/ci";
+import {
+  IoCartOutline,
+  IoSearchOutline,
+  IoHeartOutline,
+} from "react-icons/io5";
 import NavIcon from "../../Atoms/NavIcon/NavIcon";
+import { BsShopWindow } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const NavIconsPage = () => {
+  const cartCount = useSelector((state) => state.user.cart.cartCount);
+
+  const navData = [
+    {
+      title: "Shop",
+      path: "home",
+      icon: <BsShopWindow />,
+    },
+    {
+      title: "Explore",
+      path: "app/explore",
+      icon: <IoSearchOutline />,
+    },
+    {
+      title: "Cart",
+      path: "cart",
+      icon: <IoCartOutline />,
+      count: cartCount,
+    },
+    {
+      title: "Wishlist",
+      path: "app/wishlist",
+      icon: <IoHeartOutline />,
+    },
+    {
+      title: "Account",
+      path: "app/profile",
+      icon: <AiOutlineUser />,
+    },
+  ];
   return (
     <PageIconsContainer>
-      <NavIcon imgSrc={<CiShop />} text="Shop"></NavIcon>
-      <NavIcon imgSrc={<MdManageSearch />} text="Explore"></NavIcon>
-      <NavIcon imgSrc={<IoCartOutline />} text="Cart"></NavIcon>
-      <NavIcon imgSrc={<FaRegHeart />} text="Favourite"></NavIcon>
-      <NavIcon imgSrc={<CiUser />} text="Account"></NavIcon>
+      {navData.map((navItem) =>
+        navItem.count >= 0 ? (
+          <NavIcon
+            icon={navItem.icon}
+            text={navItem.title}
+            link={navItem.path}
+            count={navItem.count}
+          />
+        ) : (
+          <NavIcon
+            icon={navItem.icon}
+            text={navItem.title}
+            link={navItem.path}
+          />
+        )
+      )}
     </PageIconsContainer>
   );
 };
