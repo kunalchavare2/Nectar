@@ -53,6 +53,7 @@ const Card = styled.div`
     line-clamp: 2;
     -webkit-box-orient: vertical;
     max-width: 100px;
+    height: 36px;
   }
 
   .card-quantity {
@@ -86,25 +87,52 @@ const Card = styled.div`
 
 export default Card;
 
+const commomCardStyles = css`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  position: relative;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 0;
+  height: fit-content;
+
+  .card-title {
+    max-width: unset;
+    height: auto;
+  }
+
+  .card-title {
+    max-width: unset;
+    height: auto;
+  }
+  .card-btn {
+    display: none;
+  }
+
+  .card-img {
+    width: 30%;
+    height: 100px;
+  }
+  .card-close-btn {
+    position: absolute;
+    top: 4%;
+    right: 3%;
+    font-size: ${fontSize.titleLarge};
+    background: transparent;
+    border: none;
+    color: ${(props) => props.theme.secondary};
+  }
+  .card-close-btn:hover {
+    color: ${color.black500};
+  }
+`;
+
 function layoutStyle(layout) {
   if (layout === "cart") {
     return css`
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      position: relative;
-      border-left: none;
-      border-right: none;
-      border-top: none;
-      border-radius: 0;
-
-      .card-btn {
-        display: none;
-      }
-
-      .card-img {
-        width: 30%;
-      }
+      ${commomCardStyles}
 
       .card-quantity-btn {
         display: flex;
@@ -113,31 +141,15 @@ function layoutStyle(layout) {
         gap: 0.5rem;
         margin-right: 3rem;
       }
-      .card-close-btn {
-        position: absolute;
-        top: 4%;
-        right: 3%;
-        font-size: ${fontSize.titleLarge};
-        background: transparent;
-        border: none;
-        color: ${(props) => props.theme.secondary};
-      }
-      .card-close-btn:hover {
-        color: ${color.black500};
-      }
     `;
   } else if (layout === "wishlist") {
     return css`
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-
+      ${commomCardStyles}
       .card-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
+        justify-content: flex-start;
       }
+
+     
     `;
   }
 }
