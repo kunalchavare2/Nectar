@@ -21,7 +21,7 @@ const NavIconsPage = () => {
     },
     {
       title: "Explore",
-      path: "explore",
+      path: "app/explore",
       icon: <IoSearchOutline />,
     },
     {
@@ -32,7 +32,7 @@ const NavIconsPage = () => {
     },
     {
       title: "Wishlist",
-      path: "wishlist",
+      path: "app/wishlist",
       icon: <IoHeartOutline />,
     },
     {
