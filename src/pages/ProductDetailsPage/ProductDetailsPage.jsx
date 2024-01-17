@@ -33,7 +33,7 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const isWishlisted = UserData.wishlist.wishlistItems.includes(productId);
 
-  const ProductDetails = products.find((prod) => prod.id === Number(productId));
+  const ProductDetails = products.find((prod) => prod.id === productId);
 
   const quantityHandler = (action) => {
     // if quantity =
