@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Button from "../../components/Atoms/Button/Button";
 import Heading from "../../components/Atoms/Heading/Heading";
 import Subheading from "../../components/Atoms/Subheading/Subheading";
-import Eggbasket from "../../../src/assets/images/Egg-basket.png";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import {
   Quantity,
