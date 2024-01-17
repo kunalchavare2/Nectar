@@ -88,6 +88,7 @@ const UserSlice = createSlice({
       state.wishlist.wishlistItems = [...filterWishlistItems];
     },
   },
+  
 });
 
 export default UserSlice.reducer;

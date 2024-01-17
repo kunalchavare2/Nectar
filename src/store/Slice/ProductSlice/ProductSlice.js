@@ -10,7 +10,7 @@ const initialState = {
   error: null,
 };
 
-console.log(productData);
+console.log("data", productData);
 
 export const fetchProducts = createAsyncThunk("products/fetch", () => {
   return fetch("../../data/product.json").then((res) => {

@@ -134,4 +134,9 @@ export const reset = css`
   * {
     box-sizing: border-box;
   }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+  }
 `;

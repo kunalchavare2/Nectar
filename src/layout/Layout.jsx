@@ -11,18 +11,16 @@ import Theme from "../Theme/Theme";
 import GlobalStyles from "../styles/globalStyles";
 const Layout = () => {
   const location = useLocation();
+  const isShowFilter = location.pathname.split("/").includes("products");
+  console.log(isShowFilter);
 
-  useEffect(() => {
-    const isShowFilter = location.pathname.split("/");
-    console.log(isShowFilter);
-  }, [location]);
   return (
     <Theme>
       <GlobalStyles />
       <LayoutStyle>
         <Header />
-        <ContentStyle>
-          {"isShowFilter" && <FilterStyle>Filtter</FilterStyle>}
+        <ContentStyle isShowFilter={isShowFilter}>
+          {isShowFilter && <FilterStyle>Filtter</FilterStyle>}
           <MainContentStyle>
             <Outlet />
           </MainContentStyle>

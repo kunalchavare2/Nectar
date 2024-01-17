@@ -3,6 +3,10 @@ import App from "./App";
 import CartPage from "./pages/CartPage/CartPage";
 import Layout from "./layout/Layout";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ProductListPage from "./pages/ProductListPage/ProductListPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+import { useDispatch } from "react-redux";
+import store from "./store/Store";
 
 const routes = [
   {
@@ -24,6 +28,15 @@ const routes = [
         path: "/app/home",
         element: <App />,
         //   loader: teamLoader,
+      },
+      {
+        path: "/app/products",
+        element: <ProductListPage />,
+        //   loader: teamLoader,
+      },
+      {
+        path: "/app/product/:id",
+        element: <ProductDetailsPage />,
       },
     ],
   },

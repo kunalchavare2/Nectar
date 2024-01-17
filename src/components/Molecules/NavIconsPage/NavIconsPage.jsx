@@ -8,8 +8,11 @@ import {
 import NavIcon from "../../Atoms/NavIcon/NavIcon";
 import { BsShopWindow } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const NavIconsPage = () => {
+  const cartCount = useSelector((state) => state.user.cart.cartCount);
+
   const navData = [
     {
       title: "Shop",
@@ -25,6 +28,7 @@ const NavIconsPage = () => {
       title: "Cart",
       path: "cart",
       icon: <IoCartOutline />,
+      count: cartCount,
     },
     {
       title: "Wishlist",
@@ -39,9 +43,22 @@ const NavIconsPage = () => {
   ];
   return (
     <PageIconsContainer>
-      {navData.map((navItem) => (
-        <NavIcon icon={navItem.icon} text={navItem.title} link={navItem.path} />
-      ))}
+      {navData.map((navItem) =>
+        navItem.count >= 0 ? (
+          <NavIcon
+            icon={navItem.icon}
+            text={navItem.title}
+            link={navItem.path}
+            count={navItem.count}
+          />
+        ) : (
+          <NavIcon
+            icon={navItem.icon}
+            text={navItem.title}
+            link={navItem.path}
+          />
+        )
+      )}
     </PageIconsContainer>
   );
 };
