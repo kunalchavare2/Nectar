@@ -56,28 +56,3 @@ export function queryStringToObject(queryString = "", options = {}) {
       });
   return queryObject;
 }
-
-/**
- * @function saveToLocalStorage
- * @description This method turns user object into json string and saves it to local storage
- * @param {*} user
- * @returns null
- */
-export const saveToLocalStorage = (user) => {
-  localStorage.setItem("UserData", JSON.stringify(user));
-};
-
-/**
- * @function getFromLocalStoreage
- * @description This method turns  local storage json string into user object
- * @param
- * @returns User
- */
-
-export const getFromLocalStorage = () => {
-  const data = localStorage.getItem("UserData");
-  if (data) {
-    return JSON.parse(data);
-  }
-  return null;
-};

@@ -7,7 +7,6 @@ import ProductListPage from "./pages/ProductListPage/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import { useDispatch } from "react-redux";
 import store from "./store/Store";
-import WishlistPage from "./pages/WishlistPage/WishlistPage";
 
 const routes = [
   {
@@ -23,11 +22,6 @@ const routes = [
       {
         path: "/app/cart",
         element: <CartPage />,
-        //   loader: teamLoader,
-      },
-      {
-        path: "/app/wishlist",
-        element: <WishlistPage />,
         //   loader: teamLoader,
       },
       {

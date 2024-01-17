@@ -25,7 +25,6 @@ export const ContentStyle = styled.main`
 `;
 
 export const MainContentStyle = styled.div`
-  height: inherit;
   overflow: scroll;
 `;
 
