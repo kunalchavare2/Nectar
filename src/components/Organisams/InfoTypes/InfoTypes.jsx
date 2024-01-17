@@ -12,6 +12,11 @@ const InfoTypes = ({ type }) => {
       img: <EmptyCart />,
       message: "Your Cart is empty!",
     },
+    emptyWishlist: {
+      isSvg: true,
+      img: <EmptyCart />,
+      message: "Your Wishlist is empty!",
+    },
     pageNotFound: {
       isSvg: true,
       img: <PageNotFound />,
