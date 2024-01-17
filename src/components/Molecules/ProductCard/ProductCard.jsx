@@ -69,7 +69,7 @@ const ProductCard = ({
             </div>
           )}
         </div>
-        {layout !== "card" && (
+        {layout === "cart" && (
           <button
             className="card-close-btn"
             onClick={(ev) => removeHandler(ev, id)}
