@@ -37,35 +37,35 @@ function Footer() {
           <SocialConnect>
             <NavIcon
               icon={<FaFacebook />}
-              link="/app/explore"
+              link="/app/facebook"
               hideIcon={false}
             />
 
             <NavIcon
               icon={<FaTwitter />}
               text=" "
-              link="/app/explore"
+              link="/app/twitter"
               hideIcon={false}
             />
 
             <NavIcon
               icon={<FaInstagram />}
               text=" "
-              link="/app/explore"
+              link="/app/instagram"
               hideIcon={false}
             />
 
             <NavIcon
               icon={<FaLinkedin />}
               text=" "
-              link="/app/explore"
+              link="/app/linkedin"
               hideIcon={false}
             />
 
             <NavIcon
               icon={<FaGoogle />}
               text=" "
-              link="/app/explore"
+              link="/app/google"
               hideIcon={false}
             />
           </SocialConnect>
