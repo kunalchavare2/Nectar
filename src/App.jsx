@@ -11,7 +11,7 @@ import { Link, Navigate } from "react-router-dom";
 import { createQueryString } from "./utils/utility"; 
 import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
-
+import Filters from './components/Organisams/filter/filter.jsx';
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -65,6 +65,7 @@ function App() {
           })}
         </Grid>
       )}
+      <Filters />
       <Footer/>
     </>
   );
