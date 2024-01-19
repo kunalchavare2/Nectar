@@ -8,7 +8,8 @@ import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
 import { addToCart } from "./store/Slice/UserSlice/UserSlice";
 import { Link, Navigate } from "react-router-dom";
-import { createQueryString } from "./utils/utility";
+import { createQueryString } from "./utils/utility"; 
+import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import Filters from './components/Organisams/filter/filter.jsx';
 const Grid = styled.div`
@@ -65,6 +66,7 @@ function App() {
         </Grid>
       )}
       <Filters />
+      <Footer/>
     </>
   );
 }
