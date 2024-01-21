@@ -16,9 +16,10 @@ const Category = ({
   isCard = true,
   backgroundColor,
   HandleClick,
+  ...props
 }) => {
   return (
-    <StyledCard isCard={isCard} onClick={() => HandleClick(text)}>
+    <StyledCard isCard={isCard} onClick={() => HandleClick(text)} {...props}>
       {isCard ? (
         <>
           <Card backgroundColor={backgroundColor}>
@@ -28,7 +29,7 @@ const Category = ({
         </>
       ) : (
         <>
-          <Horizon backgroundColor={backgroundColor}>
+          <Horizon backgroundColor={backgroundColor} {...props}>
             <HorizonImage src={imgSrc} alt="Category Image" />
             <HorizonText>{text}</HorizonText>
           </Horizon>

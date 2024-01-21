@@ -14,10 +14,8 @@ import {
   IoSearchOutline,
 } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import SearchPopOver from "../../Organisams/SearchPopOver/SearchPopOver.jsx";
 
-const Header = () => {
-  const [showSearch, setShowSearch] = useState(false);
+const Header = ({ searchToggle }) => {
   const user = useSelector((state) => state.user);
   const cartCount = user.cart.cartCount;
   const wishlistCount = user.wishlist.wishlistItems.length;
@@ -48,7 +46,7 @@ const Header = () => {
         </HeaderNavStyle>
 
         <HeaderNavBtnStyle>
-          <SearchBtnStyle onClick={() => setShowSearch(!showSearch)}>
+          <SearchBtnStyle onClick={searchToggle}>
             <IoSearchOutline />
           </SearchBtnStyle>
           <NavIcon
@@ -63,7 +61,6 @@ const Header = () => {
           />
         </HeaderNavBtnStyle>
       </HeaderWrapper>
-      <SearchPopOver isOpen={showSearch} setIsOpen={setShowSearch} />
     </HeaderStyle>
   );
 };

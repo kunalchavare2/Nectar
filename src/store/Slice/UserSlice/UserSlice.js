@@ -1,15 +1,21 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from "../../../utils/utility";
 
-const initialState = {
-  wishlist: {
-    wishlistItems: [],
-  },
-  cart: {
-    cartItems: [],
-    cartCount: 0,
-  },
-};
-
+const savedLocalData = getFromLocalStorage();
+const initialState = savedLocalData
+  ? savedLocalData
+  : {
+      wishlist: {
+        wishlistItems: [],
+      },
+      cart: {
+        cartItems: [],
+        cartCount: 0,
+      },
+    };
 
 const UserSlice = createSlice({
   name: "user",
@@ -46,7 +52,6 @@ const UserSlice = createSlice({
     },
     // To update the quantity of an item in cart
     updateCartItemQuantity: (state, action) => {
-   
       // Getting current state cart items
       const cartItems = [...current(state.cart.cartItems)];
 
@@ -88,7 +93,14 @@ const UserSlice = createSlice({
       state.wishlist.wishlistItems = [...filterWishlistItems];
     },
   },
-  
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      (action) => action.type.startsWith("user/"),
+      (state) => {
+        saveToLocalStorage(current(state));
+      }
+    );
+  },
 });
 
 export default UserSlice.reducer;

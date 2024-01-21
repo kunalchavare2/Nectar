@@ -20,8 +20,8 @@ const NavIconsPage = () => {
       icon: <BsShopWindow />,
     },
     {
-      title: "Explore",
-      path: "explore",
+      title: "Products",
+      path: "products",
       icon: <IoSearchOutline />,
     },
     {

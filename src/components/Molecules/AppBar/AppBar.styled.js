@@ -16,6 +16,7 @@ const AppBarStyle = styled.div`
   font-size: 1.2rem;
   font-weight: 500;
   height: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
   .logo {
     position: absolute;
@@ -46,14 +47,19 @@ export const IconBtnStyle = styled.button`
   background-color: transparent;
   outline: transparent;
   border: transparent;
-  width: 24px;
-  height: 24px;
   font-size: 23px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 `;
 
 export const BtnWrapperStyle = styled.div`
   position: absolute;
   right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 export default AppBarStyle;

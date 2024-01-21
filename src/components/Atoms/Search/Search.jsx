@@ -4,7 +4,12 @@ import cross from "../../../assets/icons/cross.svg";
 import search from "../../../assets/icons/search.svg";
 import { Search, Inputbar, Button } from "./Search.styled";
 
-const Searchbar = ({ placeholderValue, searchHandler, searchRef }) => {
+const Searchbar = ({
+  placeholderValue,
+  searchHandler,
+  searchRef,
+  ...props
+}) => {
   const [isValue, setisValue] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const onChangeHandler = (e) => {
@@ -23,7 +28,7 @@ const Searchbar = ({ placeholderValue, searchHandler, searchRef }) => {
   }, [searchInput]);
 
   return (
-    <Search>
+    <Search {...props}>
       <img src={search} alt="search" />
       <Inputbar
         placeholder={placeholderValue}

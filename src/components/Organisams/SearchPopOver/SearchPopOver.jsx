@@ -68,7 +68,11 @@ const SearchPopOver = ({ isOpen, setIsOpen }) => {
   return (
     <Drawer isOpen={isOpen}>
       <SearchPopOverStyle>
-        <Searchbar searchHandler={searchBarHandler} searchRef={searchRef} />
+        <Searchbar
+          className="searchBarStyle"
+          searchHandler={searchBarHandler}
+          searchRef={searchRef}
+        />
         <SearchResultStyle>
           {isNoResults && (
             <Info
@@ -81,6 +85,7 @@ const SearchPopOver = ({ isOpen, setIsOpen }) => {
               {Object.keys(categories).map((key) => {
                 return (
                   <Category
+                    className="categoryItem"
                     imgSrc={categories[key].image}
                     text={categories[key].label}
                     backgroundColor={categories[key].color}

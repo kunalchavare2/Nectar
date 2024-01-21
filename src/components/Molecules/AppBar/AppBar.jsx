@@ -3,8 +3,9 @@ import AppBarStyle, { BtnWrapperStyle, IconBtnStyle } from "./AppBar.styled";
 import { useLocation, useNavigate } from "react-router";
 import { IoArrowBackSharp, IoSearchOutline } from "react-icons/io5";
 import Logo from "./../../Atoms/Logo/Logo";
+import { ReactComponent as FilterIcon } from "../../../assets/icons/filter.svg";
 
-const AppBar = ({ back = true }) => {
+const AppBar = ({ searchToggle }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [urlData, seturlData] = useState(null);
@@ -16,6 +17,7 @@ const AppBar = ({ back = true }) => {
       buttons: [
         {
           icon: <IoSearchOutline />,
+          fun: searchToggle,
         },
       ],
     },
@@ -25,9 +27,11 @@ const AppBar = ({ back = true }) => {
       buttons: [
         {
           icon: <IoSearchOutline />,
+          fun: searchToggle,
         },
         {
-          icon: <IoSearchOutline />,
+          icon: <FilterIcon />,
+          fun: () => {},
         },
       ],
     },
@@ -37,9 +41,7 @@ const AppBar = ({ back = true }) => {
       buttons: [
         {
           icon: <IoSearchOutline />,
-        },
-        {
-          icon: <IoSearchOutline />,
+          fun: () => {},
         },
       ],
     },
@@ -84,7 +86,9 @@ const AppBar = ({ back = true }) => {
           <BtnWrapperStyle>
             {urlData &&
               urlData.buttons.map((button) => (
-                <IconBtnStyle onClick={() => {}}>{button.icon}</IconBtnStyle>
+                <IconBtnStyle onClick={button.fun && button.fun}>
+                  {button.icon}
+                </IconBtnStyle>
               ))}
           </BtnWrapperStyle>
         </>
