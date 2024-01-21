@@ -6,6 +6,18 @@ const LayoutStyle = styled.div`
   .content {
     height: inherit;
   }
+
+  .appBar {
+    @media ${device.tablet} {
+      display: none;
+    }
+  }
+  .header {
+    display: none;
+    @media ${device.tablet} {
+      display: block;
+    }
+  }
 `;
 export const Grid = css`
   display: grid;
@@ -27,6 +39,11 @@ export const ContentStyle = styled.main`
 export const MainContentStyle = styled.div`
   height: inherit;
   overflow: scroll;
+  padding-bottom: 4rem;
+
+  @media ${device.tablet} {
+    padding-bottom: 0;
+  }
 `;
 
 export const FilterStyle = styled.div`

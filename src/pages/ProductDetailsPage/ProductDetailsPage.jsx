@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/Atoms/Button/Button";
 import Heading from "../../components/Atoms/Heading/Heading";
 import Subheading from "../../components/Atoms/Subheading/Subheading";
@@ -16,13 +16,17 @@ import {
   Heart,
   ProductHeading,
   Category,
+  ProductContentStyle,
+  ButtonWrapperStyle,
 } from "./ProductDetailspage.styled";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./../../store/Slice/ProductSlice/ProductSlice";
 import {
+  addToCart,
   addToWishList,
   removeFromWishList,
+  updateCartItemQuantity,
 } from "../../store/Slice/UserSlice/UserSlice";
 
 const ProductDetailsPage = () => {
@@ -30,14 +34,29 @@ const ProductDetailsPage = () => {
   const UserData = useSelector((state) => state.user);
   const productId = useParams().id;
   const { loading, products, error } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.category);
   const isWishlisted = UserData.wishlist.wishlistItems.includes(productId);
+  const isAddedToCart = UserData.cart.cartItems.find(
+    (item) => item.id === productId
+  );
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const ProductDetails = products.find((prod) => prod.id === productId);
 
   const quantityHandler = (action) => {
-    // if quantity =
-    setQuantity(action === "plus" ? quantity + 1 : quantity - 1);
+    let newValue = quantity;
+    if (action === "plus") {
+      newValue = quantity + 1;
+    } else if (action === "minus" && quantity > 1) {
+      newValue = quantity - 1;
+    }
+    console.log(isAddedToCart);
+    if (isAddedToCart) {
+      dispatch(updateCartItemQuantity({ id: productId, quantity: newValue }));
+    }
+    setQuantity(newValue);
   };
 
   const addToWishlistHandler = () => {
@@ -48,7 +67,27 @@ const ProductDetailsPage = () => {
     }
   };
 
+  const cartHandler = () => {
+    console.log(isAddedToCart);
+    if (!isAddedToCart) {
+      dispatch(addToCart({ id: productId, quantity: quantity }));
+    } else {
+      navigate("/app/cart");
+    }
+  };
+  const getCategoryColor = (category) => {
+    const foundCategoryKey = Object.keys(categories).find(
+      (key) => categories[key].label === category
+    );
+
+    return categories[foundCategoryKey].color;
+  };
+
   useEffect(() => {
+    if (isAddedToCart) {
+      setQuantity(isAddedToCart.quantity);
+    }
+
     if (products.length === 0) {
       dispatch(fetchProducts());
     }
@@ -60,39 +99,52 @@ const ProductDetailsPage = () => {
       {!loading && error && <div>error</div>}
       {!loading && products.length && (
         <ProductDetailPage>
-          <ProductImage src={ProductDetails.image} alt="eggbasket" />
-          <ProductHeadingfav>
-            <ProductHeading>
-              <Heading type="large" label={ProductDetails.title} />
-              <Subheading type="medium" label={ProductDetails.quantity} />
-            </ProductHeading>
-            {isWishlisted ? (
-              <Heart onClick={addToWishlistHandler} />
-            ) : (
-              <RegHeart onClick={addToWishlistHandler} colorValue="#7a7a7a" />
-            )}
-          </ProductHeadingfav>
-          <Category>{ProductDetails.category}</Category>
-          <ProductCountPrice>
-            <ProductCount>
+          <ProductImage>
+            <img src={ProductDetails.image} alt={ProductDetails.title} />
+          </ProductImage>
+          <ProductContentStyle>
+            <ProductHeadingfav>
+              <ProductHeading>
+                <Heading type="large" label={ProductDetails.title} />
+                <Subheading type="medium" label={ProductDetails.quantity} />
+              </ProductHeading>
+              {isWishlisted ? (
+                <Heart onClick={addToWishlistHandler} />
+              ) : (
+                <RegHeart onClick={addToWishlistHandler} colorValue="#7a7a7a" />
+              )}
+            </ProductHeadingfav>
+            <Category colorValue={getCategoryColor(ProductDetails.category)}>
+              {ProductDetails.category}
+            </Category>
+            <ProductCountPrice>
+              <ProductCount>
+                <Button
+                  icon={<FaMinus />}
+                  disabled={quantity === 1}
+                  transparent={true}
+                  onClick={() => quantityHandler("minus")}
+                />
+                <Quantity>{quantity}</Quantity>
+                <Button
+                  icon={<FaPlus />}
+                  transparent={false}
+                  onClick={() => quantityHandler("plus")}
+                />
+              </ProductCount>
+              <Price>${ProductDetails.price}</Price>
+            </ProductCountPrice>
+            <ProductDescription>
+              <Heading type="small" label="Product Details" />
+              <Subheading type="small" label={ProductDetails.description} />
+            </ProductDescription>
+            <ButtonWrapperStyle>
               <Button
-                icon={<FaMinus />}
-                transparent={true}
-                onClick={() => quantityHandler("minus")}
+                label={isAddedToCart ? "Open Cart" : "Add to Cart"}
+                onClick={cartHandler}
               />
-              <Quantity>{quantity}</Quantity>
-              <Button
-                icon={<FaPlus />}
-                transparent={false}
-                onClick={() => quantityHandler("plus")}
-              />
-            </ProductCount>
-            <Price>${ProductDetails.price}</Price>
-          </ProductCountPrice>
-          <ProductDescription>
-            <Heading type="small" label="Product Details" />
-            <Subheading type="small" label={ProductDetails.description} />
-          </ProductDescription>
+            </ButtonWrapperStyle>
+          </ProductContentStyle>
         </ProductDetailPage>
       )}
     </>

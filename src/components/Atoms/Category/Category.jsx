@@ -10,14 +10,16 @@ import {
   CardImage,
 } from "./Category.styled";
 
-const Category = ({ imgSrc, text, isCard, backgroundColor, onClick }) => {
-  const HandleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
+const Category = ({
+  imgSrc,
+  text,
+  isCard = true,
+  backgroundColor,
+  HandleClick,
+  ...props
+}) => {
   return (
-    <StyledCard isCard={isCard} onClick={HandleClick}>
+    <StyledCard isCard={isCard} onClick={() => HandleClick(text)} {...props}>
       {isCard ? (
         <>
           <Card backgroundColor={backgroundColor}>
@@ -27,7 +29,7 @@ const Category = ({ imgSrc, text, isCard, backgroundColor, onClick }) => {
         </>
       ) : (
         <>
-          <Horizon backgroundColor={backgroundColor}>
+          <Horizon backgroundColor={backgroundColor} {...props}>
             <HorizonImage src={imgSrc} alt="Category Image" />
             <HorizonText>{text}</HorizonText>
           </Horizon>

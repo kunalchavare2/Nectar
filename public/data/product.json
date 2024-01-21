@@ -11,28 +11,34 @@
   },
   "categories": {
     "Beverages": {
-      "lable": "Beverages",
-      "image": "https://i.ibb.co/jk2zcLf/Beverages.png"
+      "label": "Beverages",
+      "image": "https://i.ibb.co/jk2zcLf/Beverages.png",
+      "color": "#53B175"
     },
     "Dairy&Eggs": {
-      "lable": "Dairy & Eggs",
-      "image": "https://i.ibb.co/FzH3BNt/Dairy-Eggs.png"
+      "label": "Dairy & Eggs",
+      "image": "https://i.ibb.co/FzH3BNt/Dairy-Eggs.png",
+      "color": "#F8A44C"
     },
     "FrashF&V": {
-      "lable": "Frash Fruits & Vegetable",
-      "image": "https://i.ibb.co/XDhm5xG/Frash-Fruits-Vegetable.png"
+      "label": "Frash Fruits & Vegetable",
+      "image": "https://i.ibb.co/XDhm5xG/Frash-Fruits-Vegetable.png",
+      "color": "#F7A593"
     },
     "Meat&Fish": {
-      "lable": "Meat & Fish",
-      "image": "https://i.ibb.co/KrM79VG/Meat-Fish.png"
+      "label": "Meat & Fish",
+      "image": "https://i.ibb.co/KrM79VG/Meat-Fish.png",
+      "color": "#D3B0E0"
     },
     "Bakery&Snacks": {
-      "lable": "Bakery & Snacks",
-      "image": "https://i.ibb.co/7GTH5wG/Bakery-Snacks.png"
+      "label": "Bakery & Snacks",
+      "image": "https://i.ibb.co/7GTH5wG/Bakery-Snacks.png",
+      "color": "#FDE598"
     },
     "CookingOil&Ghee": {
-      "lable": "Cooking Oil & Ghee",
-      "image": "https://i.ibb.co/qx4HwSd/Cooking-Oil-Ghee.png"
+      "label": "Cooking Oil & Ghee",
+      "image": "https://i.ibb.co/qx4HwSd/Cooking-Oil-Ghee.png",
+      "color": "#B7DFF5"
     }
   },
   "products": [
@@ -90,12 +96,12 @@
     },
     {
       "id": "5",
-      "title": "Pepsi Can ",
+      "title": "Pepsi Can",
       "price": 4.99,
       "quantity": "330ml",
       "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
       "category": "Beverages",
-      "image": "https://i.ibb.co/xzjYDVH/Pepsi-Can.png",
+      "image": "https://i.ibb.co/9VtQ3Ry/pepsi-can.png",
       "rating": {
         "rate": 4.6,
         "count": 400

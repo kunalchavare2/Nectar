@@ -2,9 +2,9 @@ import React from "react";
 import LogoStyle, { BrandName } from "./Logo.styled";
 import { ReactComponent as LogoSvg } from "../../../assets/icons/logo.svg";
 
-const Logo = ({ showText = true }) => {
+const Logo = ({ showText = true, ...props }) => {
   return (
-    <LogoStyle>
+    <LogoStyle {...props}>
       <LogoSvg />
       {showText && <BrandName>Nectar</BrandName>}
     </LogoStyle>

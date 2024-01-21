@@ -43,4 +43,13 @@ export const HeaderNavBtnStyle = styled.div`
   ${HeaderItemWrapperStyle}
 `;
 
+export const SearchBtnStyle = styled.button`
+  background-color: transparent;
+  outline: transparent;
+  border: transparent;
+  width: 24px;
+  height: 24px;
+  font-size: 23px;
+  cursor: pointer;
+`;
 export default HeaderStyle;
