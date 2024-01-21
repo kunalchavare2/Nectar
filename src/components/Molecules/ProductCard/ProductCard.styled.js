@@ -142,14 +142,12 @@ function layoutStyle(layout) {
         margin-right: 3rem;
       }
     `;
-  } else if (layout === "wishlist") {
+  } else if (layout === "wishlist" || layout === "search") {
     return css`
       ${commomCardStyles}
       .card-content {
         justify-content: flex-start;
       }
-
-     
     `;
   }
 }

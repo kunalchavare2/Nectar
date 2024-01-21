@@ -10,14 +10,15 @@ import {
   CardImage,
 } from "./Category.styled";
 
-const Category = ({ imgSrc, text, isCard, backgroundColor, onClick }) => {
-  const HandleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
+const Category = ({
+  imgSrc,
+  text,
+  isCard = true,
+  backgroundColor,
+  HandleClick,
+}) => {
   return (
-    <StyledCard isCard={isCard} onClick={HandleClick}>
+    <StyledCard isCard={isCard} onClick={() => HandleClick(text)}>
       {isCard ? (
         <>
           <Card backgroundColor={backgroundColor}>

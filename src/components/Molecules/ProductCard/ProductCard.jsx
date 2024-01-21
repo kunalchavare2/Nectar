@@ -26,8 +26,14 @@ const ProductCard = ({
     }
   };
 
+  const handleClick = (ev) => {
+    if (!ev.target.closest(".card-btn") && openCardHandler) {
+      openCardHandler(id);
+    }
+  };
+
   return (
-    <Card layout={layout} {...props} onClick={openCardHandler}>
+    <Card layout={layout} {...props} onClick={handleClick}>
       <div className={"card-img"}>
         <img src={image} alt={title} />
       </div>
@@ -69,7 +75,7 @@ const ProductCard = ({
             </div>
           )}
         </div>
-        {layout !== "card" && (
+        {layout !== "card" && layout !== "search" && (
           <button
             className="card-close-btn"
             onClick={(ev) => removeHandler(ev, id)}
@@ -84,7 +90,7 @@ const ProductCard = ({
 
 ProductCard.propTypes = {
   //  layout is to change card to different layout
-  layout: PropTypes.oneOf(["card", "cart", "wishlist"]),
+  layout: PropTypes.oneOf(["card", "cart", "wishlist", "search"]),
   // it contains all product details
   productItem: PropTypes.object.isRequired,
   //   extra styling

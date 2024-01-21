@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.styled.js";
-import PropTypes from "prop-types";
 import HeaderStyle, {
   HeaderNavBtnStyle,
   HeaderNavStyle,
   HeaderWrapper,
+  SearchBtnStyle,
 } from "./Header.styled.js";
 import Logo from "../../Atoms/Logo/Logo.jsx";
 import NavIcon from "../../Atoms/NavIcon/NavIcon.jsx";
-import { IoCartOutline, IoHeartOutline } from "react-icons/io5";
+import {
+  IoCartOutline,
+  IoHeartOutline,
+  IoSearchOutline,
+} from "react-icons/io5";
 import { useSelector } from "react-redux";
+import SearchPopOver from "../../Organisams/SearchPopOver/SearchPopOver.jsx";
 
 const Header = () => {
+  const [showSearch, setShowSearch] = useState(false);
   const user = useSelector((state) => state.user);
   const cartCount = user.cart.cartCount;
   const wishlistCount = user.wishlist.wishlistItems.length;
@@ -42,6 +48,9 @@ const Header = () => {
         </HeaderNavStyle>
 
         <HeaderNavBtnStyle>
+          <SearchBtnStyle onClick={() => setShowSearch(!showSearch)}>
+            <IoSearchOutline />
+          </SearchBtnStyle>
           <NavIcon
             icon={<IoCartOutline />}
             link="/app/cart"
@@ -54,6 +63,7 @@ const Header = () => {
           />
         </HeaderNavBtnStyle>
       </HeaderWrapper>
+      <SearchPopOver isOpen={showSearch} setIsOpen={setShowSearch} />
     </HeaderStyle>
   );
 };

@@ -18,10 +18,10 @@ export function createQueryString(queryObject = {}) {
             .map(
               (item) => `${encodeURIComponent(key)}=${encodeURIComponent(item)}`
             )
-            .join("&")
+            .join("&!")
         : `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
     })
-    .join("&");
+    .join("&!");
   return queryString ? `?${queryString}` : "";
 }
 
@@ -36,10 +36,11 @@ export function createQueryString(queryObject = {}) {
  * @returns queryObject
  */
 export function queryStringToObject(queryString = "", options = {}) {
+  console.log(decodeURIComponent(queryString));
   let queryObject = {};
   queryString &&
     decodeURIComponent(queryString.replace("?", ""))
-      .split("&")
+      .split("&!")
       .map((itemString) => {
         let [itemKey, itemValue] = itemString.split("=");
         if (options.hasOwnProperty(itemKey)) {

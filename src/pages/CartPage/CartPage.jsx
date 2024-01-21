@@ -12,6 +12,7 @@ import { queryStringToObject } from "../../utils/utility";
 import Info from "../../components/Molecules/Info/Info";
 import emptyCart from "../../assets/images/empty-cart.svg";
 import InfoTypes from "../../components/Organisams/InfoTypes/InfoTypes";
+import AppBar from "../../components/Molecules/AppBar/AppBar";
 
 const CartPage = () => {
   const product = useSelector((state) => state.product);
