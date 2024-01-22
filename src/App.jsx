@@ -12,6 +12,7 @@ import { createQueryString } from "./utils/utility";
 import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import Filters from './components/Organisams/filter/filter.jsx';
+import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -47,7 +48,7 @@ function App() {
           Open Cart
         </Link>
       )}
-
+<HomeCategories text="kghasd"/>
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
