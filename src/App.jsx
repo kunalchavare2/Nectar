@@ -8,10 +8,10 @@ import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
 import { addToCart } from "./store/Slice/UserSlice/UserSlice";
 import { Link, Navigate } from "react-router-dom";
-import { createQueryString } from "./utils/utility"; 
+import { createQueryString } from "./utils/utility";
 import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
-import Filters from './components/Organisams/filter/filter.jsx';
+import Filters from "./components/Organisams/filter/filter.jsx";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 const Grid = styled.div`
   display: grid;
@@ -48,7 +48,15 @@ function App() {
           Open Cart
         </Link>
       )}
-<HomeCategories text="kghasd"/>
+      <HomeCategories
+        text="Exclusive Offer"
+        linkto={"/app/products"}
+        isshowGroceries={false}
+      />
+      <HomeCategories
+        text="Groceries"
+        isshowGroceries={true}
+      />
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
@@ -67,7 +75,7 @@ function App() {
         </Grid>
       )}
       <Filters />
-      <Footer/>
+      <Footer />
     </>
   );
 }
