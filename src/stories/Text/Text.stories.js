@@ -1,8 +1,8 @@
-import Subheading from "../../components/Atoms/Subheading/Subheading";
+import Text from "../../components/Atoms/Text/Text.jsx";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: "Example/Subheading",
-  component: Subheading,
+  title: "Example/Text",
+  component: Text,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",

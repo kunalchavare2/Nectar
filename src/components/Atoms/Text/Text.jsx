@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from 'prop-types';
-import SubHeadingTypes from './Subheading.styled';
+import TextTypes from './Text.styled';
 
-const Subheading = ({type,label,tcolor}) => {
+const Text = ({type,label,tcolor}) => {
     return (
-       <SubHeadingTypes size={type} textcolor={tcolor}>{label}</SubHeadingTypes>
+       <TextTypes size={type} textcolor={tcolor}>{label}</TextTypes>
     );
 };
-Subheading.propTypes = {
+Text.propTypes = {
     type: PropTypes.oneOf(['small','medium','large']),
     label: PropTypes.string.isRequired,
     tcolor:PropTypes.string,
 }
-Subheading.defaultProps = {
+Text.defaultProps = {
     backgroundColor: null,
     tcolor:'#7C7C7C',
     type: 'small',
     label: 'coke',
 };
-export default Subheading;
+export default Text;
