@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/Atoms/Button/Button";
 import Heading from "../../components/Atoms/Heading/Heading";
-import Subheading from "../../components/Atoms/Subheading/Subheading";
+import Text from "../../components/Atoms/Text/Text";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import {
   Quantity,
@@ -106,7 +106,7 @@ const ProductDetailsPage = () => {
             <ProductHeadingfav>
               <ProductHeading>
                 <Heading type="large" label={ProductDetails.title} />
-                <Subheading type="medium" label={ProductDetails.quantity} />
+                <Text type="medium" label={ProductDetails.quantity} />
               </ProductHeading>
               {isWishlisted ? (
                 <Heart onClick={addToWishlistHandler} />
@@ -136,7 +136,7 @@ const ProductDetailsPage = () => {
             </ProductCountPrice>
             <ProductDescription>
               <Heading type="small" label="Product Details" />
-              <Subheading type="small" label={ProductDetails.description} />
+              <Text type="small" label={ProductDetails.description} />
             </ProductDescription>
             <ButtonWrapperStyle>
               <Button

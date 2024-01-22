@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const SubHeadingTypes = styled.div`
+const TextTypes = styled.div`
     color:${(props)=>props.textcolor};
     font-size:${props=>{
         switch (props.size) {
@@ -20,4 +20,4 @@ const SubHeadingTypes = styled.div`
     }}
     
 `;
-export default SubHeadingTypes;
+export default TextTypes;
