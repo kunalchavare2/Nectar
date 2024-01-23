@@ -15,11 +15,24 @@ padding: 1rem;
 overflow-x: scroll; 
 display: flex;
 flex-direction: row; 
+-ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+ 
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const CategoryGroceryList= styled.div`
 gap: 1rem;
 padding: 1rem;
 overflow-x: scroll; 
 display: flex;
-flex-direction: row; `
+flex-direction: row; 
+-ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+ 
+  &::-webkit-scrollbar {
+    display: none;
+  }`
+
 ;

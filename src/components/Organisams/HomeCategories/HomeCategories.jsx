@@ -51,7 +51,7 @@ const HomeCategories = (props) => {
               <ProductCard
                 layout="card"
                 key={prod.id}
-                style={{ width: "auto" }}
+                style={{ minWidth : "150px" }}
                 productItem={prod}
                 addCartHandler={addToCartHandler}
               />
