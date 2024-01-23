@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MultiRangeSlider from "multi-range-slider-react";
+// import MultiRangeSlider from "multi-range-slider-react";
 export const FilterCategories = styled.div`
     width:90%;    
     display:flex;
@@ -7,7 +7,7 @@ export const FilterCategories = styled.div`
     gap:10px;
     
 `;
-export const RangeSlider = styled(MultiRangeSlider)`
+export const RangeSlider = styled`
 width:100%;
 max-width:400px;
 margin-top:20px;
