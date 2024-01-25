@@ -13,7 +13,8 @@ import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import Filters from "./components/Organisams/filter/filter.jsx";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
-const Grid = styled.div`
+import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
+ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
   gap: 1rem;
@@ -48,8 +49,9 @@ function App() {
           Open Cart
         </Link>
       )}
+      <HomeCarousel/> 
       <HomeCategories
-        text="Exclusive Offer"
+        text="Exclusive Offer"                                                                                                               
         linkto={"/app/products"}
         isshowGroceries={false}
       />
