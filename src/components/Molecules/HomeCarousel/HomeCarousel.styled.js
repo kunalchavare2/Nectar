@@ -1,8 +1,8 @@
 import styled from "styled-components";
 export const CarouselContianer = styled.div` 
-width:100%;
+ 
 position:relative;
-max-width:100%;
+width:100%;
 max-height:500px;
 overflow:hidden;
 `;
@@ -10,9 +10,11 @@ overflow:hidden;
 export const CarouselImage = styled.div` 
 width:100%;
 position:relative;
+overflow:hidden;
+max-height:500px;
+border:3px solid red;
 img{
     width:100%; 
-    height:100%;
     display:block;
     margin:0 auto;
     object-fit:contain;
@@ -23,7 +25,7 @@ export const CarouselContent = styled.div`
 text-align:center; 
 position:absolute;
 text-align:center;
-top:50%; 
+top:40%; 
 left:30%;
 div{
     font-size:4.25rem;

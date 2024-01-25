@@ -15,20 +15,24 @@ const HomeCarousel = () => {
   const [currrentImg, setCurrentImg] = useState(0);
   const carouselData = [
     {
-      imgUrl: require('../../../assets/images/carouselimages/Fruits.jpg') ,
+      imgUrl: require('../../../assets/images/carouselimages/veggies.jpg') ,
       heading: (
         <Heading type={"large"} tcolor={"#fff"} label={"Fresh Vegetables"} />
       ),
       subheading: (
         <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
       ),
+  
     },
     {
-      imgUrl:  require('../../../assets/images/carouselimages/pulses.jpg'),
-      heading: <Heading type={"large"} tcolor={"#fff"} label={"Pulses"} />,
-      subheading: (
-        <Text type={"large"} label={"Get Up to 40% OFFF"} tcolor="#53B175" />
+      imgUrl: require('../../../assets/images/carouselimages/legumes-arranged-circle-black-cement-floor.jpg') ,
+      heading: (
+        <Heading type={"large"} tcolor={"#fff"} label={"Fresh Vegetables"} />
       ),
+      subheading: (
+        <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
+      ),
+  
     },
     {
       imgUrl:  require('../../../assets/images/carouselimages/Pulses1.jpg'),
@@ -56,7 +60,7 @@ const HomeCarousel = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       next();
-    }, 2000);  
+    }, 3000);  
 
     return () => {
       clearInterval(intervalId);
