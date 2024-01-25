@@ -15,6 +15,16 @@ const HomeCarousel = () => {
   const [currrentImg, setCurrentImg] = useState(0);
   const carouselData = [
     {
+      imgUrl: require('../../../assets/images/carouselimages/roots.jpg') ,
+      heading: (
+        <Heading type={"large"} tcolor={"#fff"} label={"Sale is LIVE"} />
+      ),
+      subheading: (
+        <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
+      ),
+  
+    },
+    {
       imgUrl: require('../../../assets/images/carouselimages/veggies.jpg') ,
       heading: (
         <Heading type={"large"} tcolor={"#fff"} label={"Fresh Vegetables"} />
@@ -25,25 +35,25 @@ const HomeCarousel = () => {
   
     },
     {
-      imgUrl: require('../../../assets/images/carouselimages/legumes-arranged-circle-black-cement-floor.jpg') ,
+      imgUrl: require('../../../assets/images/carouselimages/bread-slice.jpg') ,
       heading: (
-        <Heading type={"large"} tcolor={"#fff"} label={"Fresh Vegetables"} />
+        <Heading type={"large"} tcolor={"#fff"} label={"Fresh Bread"} />
       ),
       subheading: (
         <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
       ),
   
-    },
+    }, 
     {
-      imgUrl:  require('../../../assets/images/carouselimages/Pulses1.jpg'),
-      heading: <Heading type={"large"} tcolor={"#fff"} label={"Pulses"} />,
-      subheading: (
-        <Text type={"large"} label={"Get Up to 40% OFFF"} tcolor="#53B175" />
-      ),
-    },
-    {
-      imgUrl:  require('../../../assets/images/carouselimages/Meats.jpg') ,
+      imgUrl:  require('../../../assets/images/carouselimages/freshmeat.jpg') ,
       heading: <Heading type={"large"} tcolor={"#fff"} label={"Fresh Meat"} />,
+      subheading: (
+        <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
+      ),
+    }, 
+    {
+      imgUrl:  require('../../../assets/images/carouselimages/oils.jpg') ,
+      heading: <Heading type={"large"} tcolor={"#fff"} label={"Cooking Oils"} />,
       subheading: (
         <Text type={"large"} label={"Get Up to 50% OFFF"} tcolor="#53B175" />
       ),
