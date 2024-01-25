@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../store/Slice/ProductSlice/ProductSlice";
 import ProductCard from "../../Molecules/ProductCard/ProductCard";
 import { addToCart } from "../../../store/Slice/UserSlice/UserSlice";
-import Category from "../../Atoms/Category/Category";
+import Category from "../../Molecules/Category/Category";
 import { useNavigate } from "react-router";
 import { createQueryString } from "../../../utils/utility";
 const HomeCategories = (props) => {

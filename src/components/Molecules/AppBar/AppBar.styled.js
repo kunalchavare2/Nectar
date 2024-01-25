@@ -47,7 +47,7 @@ export const IconBtnStyle = styled.button`
   background-color: transparent;
   outline: transparent;
   border: transparent;
-  font-size: 23px;
+  font-size: 1.438rem;
   overflow: hidden;
   display: flex;
   align-items: center;

@@ -13,7 +13,7 @@ import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import Filters from "./components/Organisams/filter/filter.jsx";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
-import HomeCarousel from "./components/Molecules/HomeCarousel/HomeCarousel.jsx";
+import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
  const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));

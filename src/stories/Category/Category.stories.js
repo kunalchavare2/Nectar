@@ -1,4 +1,4 @@
-import Category from "../../components/Atoms/Category/Category";
+import Category from "../../components/Molecules/Category/Category";
 import bakery from '../../assets/images/categories/bakery.png';
 import milk from '../../assets/images/categories/dairy.png';
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
