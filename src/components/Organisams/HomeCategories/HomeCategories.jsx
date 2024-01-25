@@ -12,18 +12,24 @@ import { fetchProducts } from "../../../store/Slice/ProductSlice/ProductSlice";
 import ProductCard from "../../Molecules/ProductCard/ProductCard";
 import { addToCart } from "../../../store/Slice/UserSlice/UserSlice";
 import Category from "../../Atoms/Category/Category";
+import { useNavigate } from "react-router";
+import { createQueryString } from "../../../utils/utility";
 const HomeCategories = (props) => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
   const { isshowGroceries, linkto, text } = props;
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
   const addToCartHandler = (ev, id) => {
     dispatch(addToCart({ id: id, quantity: 1 }));
   };
-
+  const categoryClickHandler = (id) => { 
+    let queryString = createQueryString({ category: id });
+    navigate(`/app/products${queryString}`);
+  };
   return (
     <>
       <CategoryHeaders>
@@ -40,6 +46,7 @@ const HomeCategories = (props) => {
                 imgSrc={categories[key].image}
                 text={categories[key].label}
                 backgroundColor={categories[key].color}
+                HandleClick={categoryClickHandler}
               />
             );
           })}
