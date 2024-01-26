@@ -9,10 +9,9 @@ import { Link, Navigate } from "react-router-dom";
 import { createQueryString } from "./utils/utility";
 import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
-import Filters from "./components/Organisams/filter/filter.jsx";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
- const Grid = styled.div`
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
   gap: 1rem;
@@ -38,8 +37,6 @@ function App() {
     console.log(cart);
   };
 
-
-
   return (
     <>
       <div>{cart.cartCount}</div>
@@ -49,16 +46,13 @@ function App() {
           Open Cart
         </Link>
       )}
-      <HomeCarousel/> 
+      <HomeCarousel />
       <HomeCategories
-        text="Exclusive Offer"                                                                                                               
+        text="Exclusive Offer"
         linkto={"/app/products"}
         isshowGroceries={false}
       />
-      <HomeCategories
-        text="Groceries"
-        isshowGroceries={true}
-      />
+      <HomeCategories text="Groceries" isshowGroceries={true} />
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
@@ -75,7 +69,7 @@ function App() {
           })}
         </Grid>
       )}
-      <Filters />
+
       <Footer />
     </>
   );
