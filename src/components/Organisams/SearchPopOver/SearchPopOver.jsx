@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./../../Molecules/ProductCard/ProductCard";
 import Drawer from "../../Atoms/Drawer/Drawer";
 import { fetchCategory } from "./../../../store/Slice/CategorySlice/CategorySlice";
-import Category from "./../../Atoms/Category/Category";
+import Category from "./../../Molecules/Category/Category";
 import { useNavigate } from "react-router";
 import { IoClose } from "react-icons/io5";
 import Info from "../../Molecules/Info/Info";

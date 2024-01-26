@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
 import { addToCart } from "./store/Slice/UserSlice/UserSlice";
+import { Link, Navigate } from "react-router-dom";
+import { createQueryString } from "./utils/utility";
 import Footer from "./components/Organisams/Footer/Footer.jsx";
-import Checkbox from "./components/Atoms/Checkbox/Checkbox";
-
-const Grid = styled.div`
+import AppStyle from "./App.styled.js";
+import Filters from "./components/Organisams/filter/filter.jsx";
+import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
+import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
+ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
   gap: 1rem;
@@ -39,7 +43,22 @@ function App() {
   return (
     <>
       <div>{cart.cartCount}</div>
-      <Checkbox label="test" defaultChecked={true} />
+
+      {!product.loading && (
+        <Link to={`cart${createQueryString(product.products[10])}`}>
+          Open Cart
+        </Link>
+      )}
+      <HomeCarousel/> 
+      <HomeCategories
+        text="Exclusive Offer"                                                                                                               
+        linkto={"/app/products"}
+        isshowGroceries={false}
+      />
+      <HomeCategories
+        text="Groceries"
+        isshowGroceries={true}
+      />
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
@@ -56,7 +75,7 @@ function App() {
           })}
         </Grid>
       )}
-    
+      <Filters />
       <Footer />
     </>
   );

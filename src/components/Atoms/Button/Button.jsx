@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { StyledButton, CheckoutContainer, PriceSpan } from "./button.styled";
 /**
- * Primary UI component for user interaction
+ * All Buttons for user interaction
  */
 export const Button = ({
   icon,
@@ -15,6 +15,7 @@ export const Button = ({
   ...props
 }) => {
   const isIconButton = Boolean(icon);
+  /*based on value of disable is true or false the onclick happens*/ 
   const handlleClick = (ev) => {
     if (!disabled && onClick) {
       onClick(ev);
@@ -33,14 +34,18 @@ export const Button = ({
       onClick={handlleClick}
       {...props}
     >
-      {isIconButton ? icon : null}
+       {/* prints the  + button and - button i.e icon buttons  */}
+      {isIconButton ? icon : null} 
+       {/* prints the button with label and price */}
       {label && price && (
         <CheckoutContainer>
           <span>{label}</span>
           <PriceSpan>{price}</PriceSpan>
         </CheckoutContainer>
       )}
+      {/* prints the label button only */}
       {label && !price && !isIconButton && label}
+       
     </StyledButton>
   );
 };
