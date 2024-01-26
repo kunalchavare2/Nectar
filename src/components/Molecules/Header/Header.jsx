@@ -22,7 +22,7 @@ const Header = ({ searchToggle }) => {
   return (
     <HeaderStyle>
       <HeaderWrapper>
-        <Logo showName={true} />
+        <Logo showText={true} />
         <HeaderNavStyle>
           <NavIcon icon={""} text="Home" link="/app/home" hideIcon={true} />
           <NavIcon

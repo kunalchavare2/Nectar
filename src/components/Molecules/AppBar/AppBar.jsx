@@ -60,9 +60,7 @@ const AppBar = ({ searchToggle }) => {
   };
 
   useEffect(() => {
-    console.log(location.pathname);
     let arr = location.pathname.split("/");
-    console.log(PageAppbarData[arr[arr.length - 1]]);
     seturlData((prev) => {
       return PageAppbarData[arr[arr.length - 1]]
         ? PageAppbarData[arr[arr.length - 1]]
@@ -85,8 +83,11 @@ const AppBar = ({ searchToggle }) => {
 
           <BtnWrapperStyle>
             {urlData &&
-              urlData.buttons.map((button) => (
-                <IconBtnStyle onClick={button.fun && button.fun}>
+              urlData.buttons.map((button, index) => (
+                <IconBtnStyle
+                  key={urlData.title + index}
+                  onClick={button.fun && button.fun}
+                >
                   {button.icon}
                 </IconBtnStyle>
               ))}

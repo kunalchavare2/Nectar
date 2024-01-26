@@ -26,11 +26,38 @@ const ProductListPage = () => {
   }, [location]);
 
   const filterProductsHandler = (queryStr) => {
-    const queryObj = queryStringToObject(queryStr, { category: "" });
-
-    const filterProductsTemp = products.filter((product) => {
-      return product.category === queryObj.category;
+    const queryObj = queryStringToObject(queryStr, {
+      search: null,
+      category: [],
+      minPrice: null,
+      maxPrice: null,
     });
+
+    let filterProductsTemp = products;
+
+    if ("minPrice" in queryObj && "maxPrice" in queryObj) {
+      filterProductsTemp = filterProductsTemp.filter((product) => {
+        return (
+          product.price >= Number(queryObj.minPrice) &&
+          product.price <= Number(queryObj.maxPrice)
+        );
+      });
+    }
+
+    if ("category" in queryObj) {
+      filterProductsTemp = filterProductsTemp.filter((product) => {
+        return queryObj.category.includes(product.category);
+      });
+    }
+
+    if (queryObj.search) {
+      let searchProductsTemp = filterProductsTemp.filter((product) => {
+        const isMatch = product.title.toLowerCase().match(queryObj.search);
+        return isMatch ? true : false;
+      });
+
+      filterProductsTemp = [...searchProductsTemp];
+    }
 
     setFilterProducts(filterProductsTemp);
   };

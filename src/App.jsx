@@ -1,17 +1,13 @@
 import { useEffect } from "react";
 import "./App.styled.js";
 import ProductCard from "./components/Molecules/ProductCard/ProductCard";
-import GlobalStyles from "./styles/globalStyles";
-import Theme from "./Theme/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/Slice/ProductSlice/ProductSlice";
 import styled from "styled-components";
 import { addToCart } from "./store/Slice/UserSlice/UserSlice";
-import { Link, Navigate } from "react-router-dom";
-import { createQueryString } from "./utils/utility"; 
 import Footer from "./components/Organisams/Footer/Footer.jsx";
-import AppStyle from "./App.styled.js";
-import Filters from './components/Organisams/filter/filter.jsx';
+import Checkbox from "./components/Atoms/Checkbox/Checkbox";
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -38,16 +34,12 @@ function App() {
     console.log(cart);
   };
 
+
+
   return (
     <>
       <div>{cart.cartCount}</div>
-
-      {!product.loading && (
-        <Link to={`cart${createQueryString(product.products[10])}`}>
-          Open Cart
-        </Link>
-      )}
-
+      <Checkbox label="test" defaultChecked={true} />
       {product.loading ? <div>loading{console.log(product)}</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
@@ -57,7 +49,6 @@ function App() {
               <ProductCard
                 layout="card"
                 key={prod.id}
-                style={{ width: "auto" }}
                 productItem={prod}
                 addCartHandler={addToCartHandler}
               />
@@ -65,8 +56,8 @@ function App() {
           })}
         </Grid>
       )}
-      <Filters />
-      <Footer/>
+    
+      <Footer />
     </>
   );
 }

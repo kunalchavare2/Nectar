@@ -50,14 +50,11 @@ const CartPage = () => {
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (ev, id) => {
-    console.log(id);
     dispatch(removeFromCart(id));
-    console.log(cart);
   };
 
   const qunatityHandler = (id, quantity) => {
     dispatch(updateCartItemQuantity({ id, quantity }));
-    console.log(cart);
   };
   return (
     <CartPageStyle>

@@ -49,7 +49,6 @@ Searchbar.propTypes = {
   placeholderValue: PropTypes.string,
 };
 Searchbar.defaultProps = {
-  backgroundColor: null,
   placeholderValue: "Search store",
 };
 export default Searchbar;

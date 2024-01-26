@@ -46,6 +46,7 @@ const NavIconsPage = () => {
       {navData.map((navItem) =>
         navItem.count >= 0 ? (
           <NavIcon
+            key={navItem.title}
             icon={navItem.icon}
             text={navItem.title}
             link={navItem.path}
@@ -53,6 +54,7 @@ const NavIconsPage = () => {
           />
         ) : (
           <NavIcon
+            key={navItem.title}
             icon={navItem.icon}
             text={navItem.title}
             link={navItem.path}

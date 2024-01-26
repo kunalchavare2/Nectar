@@ -27,9 +27,9 @@ export const Button = ({
         "storybook-button",
         `${isIconButton && "storybook-button--icon"}`,
       ].join(" ")}
-      transparent={transparent}
-      backgroundColor={backgroundColor}
-      disabled={disabled}
+      $transparent={transparent}
+      $backgroundColor={backgroundColor}
+      $disabled={disabled}
       onClick={handlleClick}
       {...props}
     >

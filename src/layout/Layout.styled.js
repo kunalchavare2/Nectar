@@ -21,7 +21,7 @@ const LayoutStyle = styled.div`
 `;
 export const Grid = css`
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 1rem;
 `;
 export const ContentStyle = styled.main`
@@ -32,7 +32,7 @@ export const ContentStyle = styled.main`
   @media ${device.tablet} {
     padding-top: 4rem;
     grid-template-columns: ${(props) =>
-      props.isShowFilter ? "100px 1fr" : "1fr"};
+      props.$isShowFilter ? "300px 1fr" : "1fr"};
   }
 `;
 

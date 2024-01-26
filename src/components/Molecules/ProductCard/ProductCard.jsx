@@ -12,6 +12,7 @@ const ProductCard = ({
   noOfItems,
   qunatityHandler,
   addCartHandler,
+  style,
   ...props
 }) => {
   const { id, title, price, quantity, image } = productItem;
@@ -33,7 +34,7 @@ const ProductCard = ({
   };
 
   return (
-    <Card layout={layout} {...props} onClick={handleClick}>
+    <Card $layout={layout} {...props} onClick={handleClick}>
       <div className={"card-img"}>
         <img src={image} alt={title} />
       </div>
@@ -93,8 +94,6 @@ ProductCard.propTypes = {
   layout: PropTypes.oneOf(["card", "cart", "wishlist", "search"]),
   // it contains all product details
   productItem: PropTypes.object.isRequired,
-  //   extra styling
-  style: PropTypes.shape(PropTypes.object),
   // to provide value to quantity
   noOfItems: PropTypes.number,
   // to handle on click on card
@@ -124,6 +123,7 @@ const product = {
 
 ProductCard.defaultProps = {
   layout: "card",
+  style: { width: "auto" },
   productItem: product,
 };
 
