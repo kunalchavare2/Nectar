@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import Heading from '../../Atoms/Heading/Heading';
 import PropTypes from "prop-types";
 import rightarrow from '../../../assets/icons/rightarrow.svg';

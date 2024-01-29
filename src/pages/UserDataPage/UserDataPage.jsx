@@ -1,5 +1,4 @@
 import React from 'react';
-
 import UserDetails from '../../components/Organisams/UserDetails/UserDetails.jsx';
 import ProfilePicture from '../../assets/images/profile-picture.png';
 import UserProfile from '../../components/Molecules/UserProfile/UserProfile';
