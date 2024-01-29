@@ -11,6 +11,7 @@ import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
+import UserDataPage from './pages/UserDataPage/UserDataPage.jsx';
 import { changeCurrency } from "./store/Slice/AppConfig/AppConfig.js";
 import { currency } from "./utils/constant/app-const.js";
 const Grid = styled.div`
@@ -70,6 +71,7 @@ function App() {
         </Grid>
       )}
 
+      <UserDataPage />
       <Footer />
     </>
   );
