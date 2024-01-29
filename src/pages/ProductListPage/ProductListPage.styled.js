@@ -17,6 +17,10 @@ export const PageHeader = styled.div`
   padding: 1rem;
 
   @media ${device.tablet} {
-    display: none;
+    /* display: none; */
   }
+`;
+
+export const ProductListPageStyle = styled.div`
+  /* margin-top: 3rem; */
 `;

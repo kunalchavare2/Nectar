@@ -11,6 +11,8 @@ import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
+import { changeCurrency } from "./store/Slice/AppConfig/AppConfig.js";
+import { currency } from "./utils/constant/app-const.js";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -32,28 +34,26 @@ function App() {
   }, []);
 
   const addToCartHandler = (ev, id) => {
-    console.log(id);
     dispatch(addToCart({ id: id, quantity: 1 }));
-    console.log(cart);
   };
 
   return (
     <>
-      <div>{cart.cartCount}</div>
-
-      {!product.loading && (
-        <Link to={`cart${createQueryString(product.products[10])}`}>
-          Open Cart
-        </Link>
-      )}
       <HomeCarousel />
+      <button
+        onClick={() => {
+          dispatch(changeCurrency(currency.rupee));
+        }}
+      >
+        chnage
+      </button>
       <HomeCategories
         text="Exclusive Offer"
         linkto={"/app/products"}
         isshowGroceries={false}
       />
       <HomeCategories text="Groceries" isshowGroceries={true} />
-      {product.loading ? <div>loading{console.log(product)}</div> : null}
+      {product.loading ? <div>loading</div> : null}
       {!product.loading && product.error ? <div>{product.error}</div> : null}
       {!product.loading && product.products.length && (
         <Grid>

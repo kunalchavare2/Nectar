@@ -52,7 +52,6 @@ const ProductDetailsPage = () => {
     } else if (action === "minus" && quantity > 1) {
       newValue = quantity - 1;
     }
-    console.log(isAddedToCart);
     if (isAddedToCart) {
       dispatch(updateCartItemQuantity({ id: productId, quantity: newValue }));
     }
@@ -68,7 +67,6 @@ const ProductDetailsPage = () => {
   };
 
   const cartHandler = () => {
-    console.log(isAddedToCart);
     if (!isAddedToCart) {
       dispatch(addToCart({ id: productId, quantity: quantity }));
     } else {

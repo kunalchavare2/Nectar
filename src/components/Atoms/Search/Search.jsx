@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cross from "../../../assets/icons/cross.svg";
-import search from "../../../assets/icons/search.svg";
-import { Search, Inputbar, Button } from "./Search.styled";
+import { Inputbar, Button, SearchStyle } from "./Search.styled";
+import { ReactComponent as SearchIcon } from "../../../assets/icons/search_2.svg";
 
-const Searchbar = ({
+const Search = ({
   placeholderValue,
   searchHandler,
   searchRef,
@@ -28,27 +28,30 @@ const Searchbar = ({
   }, [searchInput]);
 
   return (
-    <Search {...props}>
-      <img src={search} alt="search" />
+    <SearchStyle>
+      <SearchIcon />
       <Inputbar
+        class="input"
         placeholder={placeholderValue}
         onInput={onChangeHandler}
         value={searchInput}
         ref={searchRef}
         autoFocus
+        {...props}
       />
+
       {isValue ? (
         <Button onClick={handleClick}>
           <img src={cross} alt="cross" />
         </Button>
       ) : null}
-    </Search>
+    </SearchStyle>
   );
 };
-Searchbar.propTypes = {
+Search.propTypes = {
   placeholderValue: PropTypes.string,
 };
-Searchbar.defaultProps = {
+Search.defaultProps = {
   placeholderValue: "Search store",
 };
-export default Searchbar;
+export default Search;

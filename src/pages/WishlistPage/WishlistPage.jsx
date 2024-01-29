@@ -9,11 +9,9 @@ const WishlistPage = () => {
   const product = useSelector((state) => state.product);
   const wishlist = useSelector((state) => state.user.wishlist.wishlistItems);
   const wishlistCount = wishlist.length;
-  console.log(wishlist);
   const dispatch = useDispatch();
 
   const removeFromWishlistHandler = (ev, id) => {
-    console.log(id);
     dispatch(removeFromWishList(id));
   };
 

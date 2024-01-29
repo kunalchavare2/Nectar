@@ -1,14 +1,39 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import PriceFilterStyle, {
   PriceValue,
   PriceValueWrapper,
   RangeSlider,
 } from "./PriceFilter.styled";
+import { useLocation } from "react-router";
+import { queryStringToObject } from "../../../utils/utility";
 
 const PriceFilter = ({ getPrice }) => {
   const priceValue = useRef({ minValue: 0, maxValue: 6 });
   const [priceState, setPriceState] = useState({ minValue: 0, maxValue: 6 });
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.length) {
+      const queryObj = queryStringToObject(location.search, {
+        maxPrice: 0,
+        minPrice: 6,
+      });
+     
+      if ("maxPrice" in queryObj && "minPrice" in queryObj) {
+     console.log(queryObj);
+        priceValue.current = {
+          minValue: Number(queryObj.minPrice),
+          maxValue: Number(queryObj.maxPrice),
+        };
+
+        setPriceState({
+          minValue: Number(queryObj.minPrice),
+          maxValue: Number(queryObj.maxPrice),
+        });
+      }
+    }
+  }, []);
 
   const handleInput = (e) => {
     if (
@@ -36,7 +61,7 @@ const PriceFilter = ({ getPrice }) => {
       <RangeSlider
         min={0}
         max={6}
-        step={0.5}
+        step={0.1}
         minValue={priceValue.current.minValue}
         maxValue={priceValue.current.maxValue}
         style={{ border: "none", boxShadow: "none" }}

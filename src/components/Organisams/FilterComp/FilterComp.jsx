@@ -3,12 +3,31 @@ import Heading from "../../Atoms/Heading/Heading";
 import { Filter, FilterCategories } from "./FilterComp.styled";
 import CategoryFilter from "../../Molecules/CategoryFilter/CategoryFilter";
 import PriceFilter from "../../Molecules/PriceFilter/PriceFilter";
-import { createQueryString } from "../../../utils/utility";
-import { useNavigate } from "react-router";
+import { createQueryString, queryStringToObject } from "../../../utils/utility";
+import { useLocation, useNavigate } from "react-router";
 
 const FilterComp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [filterState, setFilterState] = useState({});
+
+  useEffect(() => {
+    if (location.search.length) {
+      const queryObj = queryStringToObject(location.search, {
+        maxPrice: 0,
+        minPrice: 6,
+        category: [],
+        search: "",
+        sort: "",
+      });
+
+      if ("maxPrice" in queryObj && "category" in queryObj) {
+        setFilterState((prev) => {
+          return { ...prev, ...queryObj };
+        });
+      }
+    }
+  }, []);
 
   const getPriceHandler = (priceObj) => {
     setFilterState((prev) => {
@@ -25,10 +44,11 @@ const FilterComp = () => {
   const handleFilterChange = (e) => {};
 
   useEffect(() => {
-    console.log(filterState);
-    const queryString = createQueryString({...filterState});
+    let queryString = createQueryString({ ...filterState });
 
-    console.log(queryString);
+    if (location.search.length > 1 && !filterState.category && !queryString) {
+      queryString = location.search;
+    }
     navigate(`/app/products${queryString}`, { replace: true });
   }, [filterState]);
 

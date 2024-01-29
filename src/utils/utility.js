@@ -36,7 +36,6 @@ export function createQueryString(queryObject = {}) {
  * @returns queryObject
  */
 export function queryStringToObject(queryString = "", options = {}) {
-  console.log(decodeURIComponent(queryString));
   let queryObject = {};
   queryString &&
     decodeURIComponent(queryString.replace("?", ""))
@@ -51,7 +50,7 @@ export function queryStringToObject(queryString = "", options = {}) {
             ? queryObject[itemKey].push(itemValue)
             : (queryObject[itemKey] =
                 typeof options[itemKey] === "number"
-                  ? parseInt(itemValue)
+                  ? parseFloat(itemValue)
                   : itemValue);
         }
       });
@@ -62,23 +61,36 @@ export function queryStringToObject(queryString = "", options = {}) {
  * @function saveToLocalStorage
  * @description This method turns user object into json string and saves it to local storage
  * @param {*} user
+ * @param {string} key
  * @returns null
  */
-export const saveToLocalStorage = (user) => {
-  localStorage.setItem("UserData", JSON.stringify(user));
+export const saveToLocalStorage = (user, key) => {
+  localStorage.setItem(key, JSON.stringify(user));
 };
 
 /**
  * @function getFromLocalStoreage
  * @description This method turns  local storage json string into user object
- * @param
+ * @param {string} key
  * @returns User
  */
 
-export const getFromLocalStorage = () => {
-  const data = localStorage.getItem("UserData");
+export const getFromLocalStorage = (key) => {
+  const data = localStorage.getItem(key);
   if (data) {
     return JSON.parse(data);
   }
   return null;
 };
+
+/**
+ * @function currencyConverter
+ * @description This method convert product currency price into app currency price
+ * @param {number} price
+ * @param
+ * @returns price String
+ */
+export function currencyConverter(price, currency) {
+  const newPrice = Number(price) * currency.valueToDoller;
+  return `${currency.symbol} ${Math.round(newPrice)} `;
+}

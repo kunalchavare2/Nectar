@@ -3,8 +3,10 @@ import {
   getFromLocalStorage,
   saveToLocalStorage,
 } from "../../../utils/utility";
+import { LocalStorageKeys } from "../../../utils/constant/global-const";
+import store from "../../Store";
 
-const savedLocalData = getFromLocalStorage();
+const savedLocalData = getFromLocalStorage(LocalStorageKeys.userData);
 const initialState = savedLocalData
   ? savedLocalData
   : {
@@ -35,7 +37,6 @@ const UserSlice = createSlice({
     },
     // To remove the element from cart items
     removeFromCart: (state, action) => {
-      console.log(action);
       // Getting current state cart items
       const cartItems = [...current(state.cart.cartItems)];
 
@@ -62,6 +63,11 @@ const UserSlice = createSlice({
 
       // Updating item quantity using position
       state.cart.cartItems[position].quantity = action.payload.quantity;
+    },
+
+    clearCart: (state, action) => {
+      state.cart.cartItems = [];
+      state.cart.cartCount = 0;
     },
     addToWishList: (state, action) => {
       // Getting current state wishlist items
@@ -97,7 +103,7 @@ const UserSlice = createSlice({
     builder.addMatcher(
       (action) => action.type.startsWith("user/"),
       (state) => {
-        saveToLocalStorage(current(state));
+        saveToLocalStorage(current(state), LocalStorageKeys.userData);
       }
     );
   },
@@ -106,6 +112,7 @@ const UserSlice = createSlice({
 export default UserSlice.reducer;
 export const {
   addToCart,
+  clearCart,
   removeFromCart,
   updateCartItemQuantity,
   addToWishList,

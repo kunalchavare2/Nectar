@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Button from "../../Atoms/Button/Button";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { currencyConverter } from "../../../utils/utility";
 
 const ProductCard = ({
   layout,
@@ -16,6 +18,8 @@ const ProductCard = ({
   ...props
 }) => {
   const { id, title, price, quantity, image } = productItem;
+
+  const appconfig = useSelector((state) => state.appconfig);
 
   const changeQunatityHandler = (productId, action) => {
     if (action === "add") {
@@ -64,7 +68,9 @@ const ProductCard = ({
               />
             </div>
           )}
-          <div className="card-price">{price}</div>
+          <div className="card-price">
+            {currencyConverter(price, appconfig.currentCurrency)}
+          </div>
           {layout === "card" && (
             <div className="card-btn">
               <Button
