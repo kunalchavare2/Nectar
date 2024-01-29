@@ -6,6 +6,7 @@ export const FilterCategories = styled.div`
   flex-direction: column;
   gap: 10px;
   padding-bottom: 1rem;
+
   border-bottom: 1px solid ${color.gray100};
 `;
 
@@ -13,7 +14,8 @@ export const Filter = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: #f2f3f2;
   max-width: 500px;
   padding: 20px;
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.body};
 `;

@@ -14,7 +14,7 @@ const FilterComp = () => {
   useEffect(() => {
     if (location.search.length) {
       const queryObj = queryStringToObject(location.search, {
-        maxPrice: 0,
+        maxPrice: 1,
         minPrice: 6,
         category: [],
         search: "",

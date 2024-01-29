@@ -34,6 +34,14 @@ export const color = {
   // Orange color variations
   orange100: "#F8A44C",
   orange200: "#F3603F",
+
+  denger:"#dc3545",
+
+  dark100: "#121212",
+  dark200: "#282828",
+  dark300: "#3f3f3f",
+
+
 };
 
 export const fontSize = {

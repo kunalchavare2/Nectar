@@ -10,7 +10,8 @@ const HeaderStyle = styled.header`
   align-items: center;
   z-index: 200;
   justify-content: center;
-  background-color: white;
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.backgroundColor};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   @media ${device.tablet} {
     display: flex;
@@ -50,7 +51,9 @@ export const SearchBtnStyle = styled.button`
   border: transparent;
   width: 24px;
   height: 24px;
-  font-size: 23px;
+  color: ${(props) => props.theme.primary};
+
+  font-size: ${fontSize.titleLarge};
   cursor: pointer;
 `;
 export default HeaderStyle;

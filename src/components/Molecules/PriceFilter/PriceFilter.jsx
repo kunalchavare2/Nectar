@@ -6,11 +6,14 @@ import PriceFilterStyle, {
   RangeSlider,
 } from "./PriceFilter.styled";
 import { useLocation } from "react-router";
-import { queryStringToObject } from "../../../utils/utility";
+import { currencyConverter, queryStringToObject } from "../../../utils/utility";
+import { color } from "../../../utils/constant/style-const";
+import { useSelector } from "react-redux";
 
 const PriceFilter = ({ getPrice }) => {
-  const priceValue = useRef({ minValue: 0, maxValue: 6 });
+  const priceValue = useRef({ minValue: 0, maxValue: 16 });
   const [priceState, setPriceState] = useState({ minValue: 0, maxValue: 6 });
+  const appconfig = useSelector((state) => state.appconfig);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,9 +22,9 @@ const PriceFilter = ({ getPrice }) => {
         maxPrice: 0,
         minPrice: 6,
       });
-     
+
       if ("maxPrice" in queryObj && "minPrice" in queryObj) {
-     console.log(queryObj);
+        console.log(queryObj);
         priceValue.current = {
           minValue: Number(queryObj.minPrice),
           maxValue: Number(queryObj.maxPrice),
@@ -60,7 +63,7 @@ const PriceFilter = ({ getPrice }) => {
     <PriceFilterStyle>
       <RangeSlider
         min={0}
-        max={6}
+        max={16}
         step={0.1}
         minValue={priceValue.current.minValue}
         maxValue={priceValue.current.maxValue}
@@ -68,12 +71,16 @@ const PriceFilter = ({ getPrice }) => {
         className="range-slider"
         label="false"
         ruler="false"
-        barInnerColor="#53B175"
+        barInnerColor={color.green100}
         onChange={handleInput}
       />
       <PriceValueWrapper>
-        <PriceValue>{"$" + priceState.minValue}</PriceValue>
-        <PriceValue>{"$" + priceState.maxValue}</PriceValue>
+        <PriceValue>
+          {currencyConverter(priceState.minValue, appconfig.currentCurrency)}
+        </PriceValue>
+        <PriceValue>
+          {currencyConverter(priceState.maxValue, appconfig.currentCurrency)}
+        </PriceValue>
       </PriceValueWrapper>
     </PriceFilterStyle>
   );

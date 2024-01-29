@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { color, opacity } from "../../../utils/constant/style-const";
+import { Button } from "./../Button/Button";
 export const SearchStyle = styled.div`
   display: flex;
   line-height: 28px;
@@ -27,6 +28,8 @@ export const Inputbar = styled.input`
   background-color: #f3f3f4;
   color: #0d0c22;
   transition: 0.3s ease;
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.searchBackground};
 
   &::placeholder {
     color: #9e9ea7;
@@ -36,13 +39,16 @@ export const Inputbar = styled.input`
   &:hover {
     outline: none;
     border-color: ${color.green100 + opacity(40)};
-    background-color: #fff;
+    background-color: ${(props) => props.theme.searchBackground};
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 `;
-export const Button = styled.button`
+export const IconBtn = styled(Button)`
   position: absolute;
+  width: fit-content;
   right: 10px;
   border: none;
   padding: 0px;
+  background-color: transparent;
+  color: ${(props) => props.theme.denger};
 `;

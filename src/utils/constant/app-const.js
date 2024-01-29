@@ -8,3 +8,9 @@ export const currency = {
     valueToDoller: 83.03,
   },
 };
+
+export const tagsColor = {
+  Exclusive: "#2a9d8f",
+  bestseller: "#e9c46a",
+  new: "#118ab2",
+};

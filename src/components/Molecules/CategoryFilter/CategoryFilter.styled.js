@@ -7,6 +7,8 @@ const CategoryFilterStyle = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.body};
 `;
 
 export default CategoryFilterStyle;

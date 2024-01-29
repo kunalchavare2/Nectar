@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { color, fontWeight } from "../../../utils/constant/style-const";
 export const CheckoutContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -11,29 +12,29 @@ export const PriceSpan = styled.div`
   font-weight: 600;
   line-height: 18px; /* 150% */
   border-radius: 4px;
-  background: #489e67;
+  background: ${(props) => props.theme.btnBackground};
   padding: 2px 5px;
 `;
 export const StyledButton = styled.button`
-  color: #fff;
+  color: ${(props) => props.theme.primary};
   font-size: 18px;
-  font-weight: 600;
-  line-height: 18px;
+  font-weight: ${fontWeight.semiBold};
+  line-height: auto;
   border: 0;
   cursor: pointer;
   display: inline-block;
   border-radius: 19px;
   width: 100%;
-  /* height: 67px; */
   padding: 1rem;
   flex-shrink: 0;
+  background: ${(props) => props.theme.btnBackground};
 
   ${(props) =>
     props.$transparent &&
     css`
-      background-color: #fff;
-      color: #53b175;
-      border: 1px solid rgba(226, 226, 226, 1);
+      background-color: transparent;
+      color: ${(props) => props.theme.accent};
+      border: 1px solid ${(props) => props.theme.btnborder};
     `}
 
   /* Styles for icon buttons */
@@ -55,6 +56,6 @@ export const StyledButton = styled.button`
     props.$disabled &&
     css`
       cursor: not-allowed;
-      color: grey;
+      color: ${(props) => props.theme.disabled};
     `}
 `;

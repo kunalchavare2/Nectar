@@ -6,6 +6,7 @@ const CheckoutPriceStyle = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding-top: 4rem;
+  color: ${(props) => props.theme.primary};
 `;
 
 export const FreeDeliveryStyle = styled.div`
@@ -15,13 +16,13 @@ export const FreeDeliveryStyle = styled.div`
   .title {
     padding: 0.3rem 0.8rem;
     /* flex: 2; */
-    color: ${color.white};
+    color: ${(props) => props.theme.primary};
     background-color: ${color.green100};
   }
   .description {
     padding: 0.3rem 0.8rem;
     flex: 4;
-    color: ${color.blue500};
+    color: ${(props) => props.theme.secondary};
     background-color: ${color.gray300};
   }
 `;

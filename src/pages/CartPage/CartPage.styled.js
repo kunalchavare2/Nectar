@@ -47,6 +47,6 @@ export const HeadingStyle = styled.div`
   margin-bottom: 2rem;
   width: fit-content;
   z-index: 500;
-  background-color: ${color.white};
+  color: ${(props) => props.theme.primary};
 `;
 export default CartPageStyle;

@@ -24,7 +24,7 @@ import {
 } from "./Footer.styled";
 function Footer() {
   return (
-    <>
+    <footer>
       <FooterContainer>
         <LogoBlock>
           <Logo showText={true} />
@@ -151,7 +151,7 @@ function Footer() {
           />
         </PrivacyLinks>
       </CopyRights>
-    </>
+    </footer>
   );
 }
 export default Footer;
