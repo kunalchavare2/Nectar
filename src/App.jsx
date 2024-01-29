@@ -14,6 +14,7 @@ import AppStyle from "./App.styled.js";
 import Filters from "./components/Organisams/filter/filter.jsx";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
+import UserDataPage from './pages/UserDataPage/UserDataPage.jsx';
  const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -77,6 +78,7 @@ function App() {
         </Grid>
       )}
       <Filters />
+      <UserDataPage />
       <Footer />
     </>
   );
