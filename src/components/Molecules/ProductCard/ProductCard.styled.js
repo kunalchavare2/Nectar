@@ -82,7 +82,7 @@ const Card = styled.div`
     letter-spacing: 0.00625rem;
   }
 
-  ${(props) => layoutStyle(props.layout)}
+  ${(props) => layoutStyle(props.$layout)}
 `;
 
 export default Card;
@@ -129,8 +129,8 @@ const commomCardStyles = css`
   }
 `;
 
-function layoutStyle(layout) {
-  if (layout === "cart") {
+function layoutStyle($layout) {
+  if ($layout === "cart") {
     return css`
       ${commomCardStyles}
 
@@ -142,7 +142,7 @@ function layoutStyle(layout) {
         margin-right: 3rem;
       }
     `;
-  } else if (layout === "wishlist" || layout === "search") {
+  } else if ($layout === "wishlist" || $layout === "search") {
     return css`
       ${commomCardStyles}
       .card-content {

@@ -10,7 +10,7 @@ export const fontWeight = {
 
 export const color = {
   //  White color variations
-  white: "ffffff",
+  white: "#ffffff",
 
   // Blue color variations
   blue500: "#181725",
@@ -29,6 +29,7 @@ export const color = {
   // Green color variations
   green100: "#53B175",
   green200: "#489E67",
+  greenSheen: "#85b8b7",
 
   // Orange color variations
   orange100: "#F8A44C",
@@ -57,17 +58,15 @@ export const fontSize = {
   captionSmall: "0.75rem",
 };
 
-
 const size = {
-  mobileS: '320px',
-  mobileM: '375px',
-  mobileL: '425px',
-  tablet: '768px',
-  laptop: '1024px',
-  laptopL: '1440px',
-  desktop: '2560px'
-}
-
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
 
 export const device = {
   mobileS: `(min-width: ${size.mobileS})`,
@@ -77,5 +76,10 @@ export const device = {
   laptop: `(min-width: ${size.laptop})`,
   laptopL: `(min-width: ${size.laptopL})`,
   desktop: `(min-width: ${size.desktop})`,
-  desktopL: `(min-width: ${size.desktop})`
+  desktopL: `(min-width: ${size.desktop})`,
+};
+
+export const opacity = (percentage) => {
+  let decimal = (percentage * 255) / 100;
+  return Math.round(decimal).toString(16);
 };

@@ -8,6 +8,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import { useDispatch } from "react-redux";
 import store from "./store/Store";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
       {
         path: "/app/home",
         element: <App />,
+        //   loader: teamLoader,
+      },
+      {
+        path: "/app/orders",
+        element: <OrdersPage />,
         //   loader: teamLoader,
       },
       {

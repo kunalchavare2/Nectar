@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Button from "../../Atoms/Button/Button";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { currencyConverter } from "../../../utils/utility";
 
 const ProductCard = ({
   layout,
@@ -12,9 +14,12 @@ const ProductCard = ({
   noOfItems,
   qunatityHandler,
   addCartHandler,
+  style,
   ...props
 }) => {
   const { id, title, price, quantity, image } = productItem;
+
+  const appconfig = useSelector((state) => state.appconfig);
 
   const changeQunatityHandler = (productId, action) => {
     if (action === "add") {
@@ -33,7 +38,7 @@ const ProductCard = ({
   };
 
   return (
-    <Card layout={layout} {...props} onClick={handleClick}>
+    <Card $layout={layout} {...props} onClick={handleClick}>
       <div className={"card-img"}>
         <img src={image} alt={title} />
       </div>
@@ -63,7 +68,9 @@ const ProductCard = ({
               />
             </div>
           )}
-          <div className="card-price">{price}</div>
+          <div className="card-price">
+            {currencyConverter(price, appconfig.currentCurrency)}
+          </div>
           {layout === "card" && (
             <div className="card-btn">
               <Button
@@ -93,8 +100,6 @@ ProductCard.propTypes = {
   layout: PropTypes.oneOf(["card", "cart", "wishlist", "search"]),
   // it contains all product details
   productItem: PropTypes.object.isRequired,
-  //   extra styling
-  style: PropTypes.shape(PropTypes.object),
   // to provide value to quantity
   noOfItems: PropTypes.number,
   // to handle on click on card
@@ -124,6 +129,7 @@ const product = {
 
 ProductCard.defaultProps = {
   layout: "card",
+  style: { width: "auto" },
   productItem: product,
 };
 

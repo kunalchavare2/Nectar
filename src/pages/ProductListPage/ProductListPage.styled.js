@@ -5,6 +5,10 @@ export const Specifiedproductlist = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
   gap: 1rem;
   padding: 1rem;
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 `;
 export const PageHeader = styled.div`
   display: flex;
@@ -13,6 +17,10 @@ export const PageHeader = styled.div`
   padding: 1rem;
 
   @media ${device.tablet} {
-    display: none;
+    /* display: none; */
   }
+`;
+
+export const ProductListPageStyle = styled.div`
+  /* margin-top: 3rem; */
 `;

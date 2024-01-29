@@ -47,7 +47,7 @@ const SearchPopOver = ({ isOpen, setIsOpen }) => {
 
   const categoryClickHandler = (id) => {
     exitBtnHandler();
-    let queryString = createQueryString({ category: id });
+    let queryString = createQueryString({ category: [id] });
     navigate(`/app/products${queryString}`);
   };
 
@@ -85,6 +85,7 @@ const SearchPopOver = ({ isOpen, setIsOpen }) => {
               {Object.keys(categories).map((key) => {
                 return (
                   <Category
+                    key={key}
                     className="categoryItem"
                     imgSrc={categories[key].image}
                     text={categories[key].label}

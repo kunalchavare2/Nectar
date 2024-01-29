@@ -29,7 +29,7 @@ export const StyledButton = styled.button`
   flex-shrink: 0;
 
   ${(props) =>
-    props.transparent &&
+    props.$transparent &&
     css`
       background-color: #fff;
       color: #53b175;
@@ -46,13 +46,13 @@ export const StyledButton = styled.button`
   }
 
   ${(props) =>
-    props.backgroundColor &&
-    !props.transparent &&
+    props.$backgroundColor &&
+    !props.$transparent &&
     css`
-      background-color: ${props.backgroundColor};
+      background-color: ${props.$backgroundColor};
     `}
   ${(props) =>
-    props.disabled &&
+    props.$disabled &&
     css`
       cursor: not-allowed;
       color: grey;

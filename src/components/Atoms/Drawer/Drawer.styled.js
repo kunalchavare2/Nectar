@@ -14,5 +14,7 @@ const DrawerStyle = styled.div`
   -webkit-backdrop-filter: blur(5px) saturate(139%);
   background-color: rgba(17, 25, 40, 0.75);
   transition: all 0.5s linear;
+
+  ${(props) => props.extraStyles && props.extraStyles}
 `;
 export default DrawerStyle;

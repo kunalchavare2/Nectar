@@ -68,3 +68,30 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+{
+"productId": "1001",
+"productName": "Smartphone X",
+"description": "High-performance smartphone with advanced features.",
+"category": "Electronics",
+"price": 599.99,
+"currency": "USD",
+"inStock": true,
+"availability": {
+"stockQuantity": 50,
+"isAvailable": true
+},
+"attributes": {
+"color": "Silver",
+"size": "6.2 inches"
+},
+"images": [
+"phone_x_image1.jpg",
+"phone_x_image2.jpg",
+"phone_x_image3.jpg"
+],
+"reviews": [],
+"manufacturer": "TechCo",
+"createdAt": "2024-01-28T14:30:00Z",
+"updatedAt": "2024-01-28T14:30:00Z"
+}

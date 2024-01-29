@@ -8,6 +8,7 @@ const HeaderStyle = styled.header`
   padding: 1rem 0;
   display: none;
   align-items: center;
+  z-index: 200;
   justify-content: center;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;

@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import NavIconsPage from "../components/Molecules/NavIconsPage/NavIconsPage";
-import LayoutStyle, {
-  ContentStyle,
-  FilterStyle,
-  MainContentStyle,
-} from "./Layout.styled";
+import LayoutStyle, { ContentStyle, MainContentStyle } from "./Layout.styled";
 import Header from "../components/Molecules/Header/Header";
 import Theme from "../Theme/Theme";
 import GlobalStyles from "../styles/globalStyles";
 import AppBar from "../components/Molecules/AppBar/AppBar";
 import SearchPopOver from "../components/Organisams/SearchPopOver/SearchPopOver";
+import FilterComp from "../components/Organisams/FilterComp/FilterComp";
 const Layout = () => {
   const location = useLocation();
   const [showSearch, setShowSearch] = useState(false);
@@ -26,8 +23,8 @@ const Layout = () => {
       <LayoutStyle>
         <Header className="header" searchToggle={searchToggle} />
         <AppBar className="appBar" searchToggle={searchToggle} />
-        <ContentStyle isShowFilter={isShowFilter}>
-          {isShowFilter && <FilterStyle>Filtter</FilterStyle>}
+        <ContentStyle $isShowFilter={isShowFilter}>
+          {isShowFilter && <FilterComp />}
 
           <MainContentStyle>
             <Outlet />

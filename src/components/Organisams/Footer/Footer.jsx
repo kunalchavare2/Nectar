@@ -27,7 +27,7 @@ function Footer() {
     <>
       <FooterContainer>
         <LogoBlock>
-          <Logo showName={true} />
+          <Logo showText={true} />
           <FooterContent>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             tenetur, eum, sint velit excepturi in quam ab quae veritatis, earum
@@ -71,7 +71,7 @@ function Footer() {
           </SocialConnect>
         </LogoBlock>
         <FooterLinks>
-        <h3>Links</h3> 
+          <h3>Links</h3>
           <NavIcon icon={""} text="Home" link="/app/home" hideIcon={true} />
           <NavIcon
             icon={""}
@@ -93,7 +93,7 @@ function Footer() {
           />
         </FooterLinks>
         <FooterLinks>
-           <h3>Contact Us </h3> 
+          <h3>Contact Us </h3>
           <NavIcon
             icon={<FaPhoneAlt />}
             text="(91) 98765 4321 54"
@@ -130,10 +130,25 @@ function Footer() {
       <CopyRights>
         <b>© Copyright by CodeUi. All rights reserved</b>
         <PrivacyLinks>
-          <NavIcon icon={""} text="Privacy Policy" link="/app/privacy" hideIcon={true} />
-          <NavIcon icon={""} text="Terms of Use" link="/app/termsofuse" hideIcon={true} />
+          <NavIcon
+            icon={""}
+            text="Privacy Policy"
+            link="/app/privacy"
+            hideIcon={true}
+          />
+          <NavIcon
+            icon={""}
+            text="Terms of Use"
+            link="/app/termsofuse"
+            hideIcon={true}
+          />
           <NavIcon icon={""} text="Legal" link="/app/legal" hideIcon={true} />
-          <NavIcon icon={""} text="Site Map" link="/app/sitemap" hideIcon={true} />
+          <NavIcon
+            icon={""}
+            text="Site Map"
+            link="/app/sitemap"
+            hideIcon={true}
+          />
         </PrivacyLinks>
       </CopyRights>
     </>

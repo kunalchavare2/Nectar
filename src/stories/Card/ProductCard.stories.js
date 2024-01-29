@@ -38,7 +38,6 @@ Cart.args = {
   productQuantity: "4pcs",
   productPrice: "$1.99",
   quantityHandler: (v) => {
-    console.log(v);
   },
 };
 
