@@ -11,9 +11,12 @@ import Footer from "./components/Organisams/Footer/Footer.jsx";
 import AppStyle from "./App.styled.js";
 import HomeCategories from "./components/Organisams/HomeCategories/HomeCategories.jsx";
 import HomeCarousel from "./components/Organisams/HomeCarousel/HomeCarousel.jsx";
-import UserDataPage from './pages/UserDataPage/UserDataPage.jsx';
+import UserDataPage from "./pages/UserDataPage/UserDataPage.jsx";
 import { changeCurrency } from "./store/Slice/AppConfig/AppConfig.js";
 import { currency } from "./utils/constant/app-const.js";
+import { useContext } from "react";
+import { ThemeDispatcher } from "./Theme/Theme.jsx";
+import { ThemeData } from "./Theme/ThemeData.js";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(134px, 1fr));
@@ -46,32 +49,30 @@ function App() {
           dispatch(changeCurrency(currency.rupee));
         }}
       >
-        chnage
+        chnage currency
       </button>
+      <HomeCategories
+        text="New Products"
+        linkto={"/app/products"}
+        tag="new"
+        isshowGroceries={false}
+      />
+
       <HomeCategories
         text="Exclusive Offer"
         linkto={"/app/products"}
+        tag="Exclusive"
         isshowGroceries={false}
       />
-      <HomeCategories text="Groceries" isshowGroceries={true} />
-      {product.loading ? <div>loading</div> : null}
-      {!product.loading && product.error ? <div>{product.error}</div> : null}
-      {!product.loading && product.products.length && (
-        <Grid>
-          {product.products.map((prod) => {
-            return (
-              <ProductCard
-                layout="card"
-                key={prod.id}
-                productItem={prod}
-                addCartHandler={addToCartHandler}
-              />
-            );
-          })}
-        </Grid>
-      )}
 
-      <UserDataPage />
+      <HomeCategories text="Groceries" isshowGroceries={true} />
+      <HomeCategories
+        text="Best Selling"
+        linkto={"/app/products"}
+        tag="bestseller"
+        isshowGroceries={false}
+      />
+      {/* <UserDataPage /> */}
       <Footer />
     </>
   );

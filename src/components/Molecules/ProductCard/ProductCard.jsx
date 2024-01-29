@@ -1,10 +1,13 @@
-import Card from "./ProductCard.styled";
+import Card, { TagWrapper } from "./ProductCard.styled";
 import PropTypes from "prop-types";
 import Button from "../../Atoms/Button/Button";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { currencyConverter } from "../../../utils/utility";
+import { checkOlderDate, currencyConverter } from "../../../utils/utility";
+import { style } from "styled-components";
+import Tag from "../../Atoms/Tag/Tag";
+import { tagsColor } from "../../../utils/constant/app-const";
 
 const ProductCard = ({
   layout,
@@ -14,12 +17,19 @@ const ProductCard = ({
   noOfItems,
   qunatityHandler,
   addCartHandler,
-  style,
+
+  style = { width: "100%" },
   ...props
 }) => {
-  const { id, title, price, quantity, image } = productItem;
+  const { id, title, price, quantity, image, tags, createdAt } = productItem;
+  let newTags = [...tags];
 
   const appconfig = useSelector((state) => state.appconfig);
+
+  const created = new Date(createdAt);
+  if (checkOlderDate(created)) {
+    newTags.push("new");
+  }
 
   const changeQunatityHandler = (productId, action) => {
     if (action === "add") {
@@ -38,7 +48,12 @@ const ProductCard = ({
   };
 
   return (
-    <Card $layout={layout} {...props} onClick={handleClick}>
+    <Card $layout={layout} cardstyle={style} {...props} onClick={handleClick}>
+      <TagWrapper>
+        {newTags.reverse().map((tag, index) => (
+          <Tag label={tag} color={tagsColor[tag]} />
+        ))}
+      </TagWrapper>
       <div className={"card-img"}>
         <img src={image} alt={title} />
       </div>
@@ -110,6 +125,7 @@ ProductCard.propTypes = {
   qunatityHandler: PropTypes.func,
   // function to handle cart change
   addCartHandler: PropTypes.func,
+  style: PropTypes.any,
 };
 
 const product = {

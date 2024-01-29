@@ -12,7 +12,7 @@ export const IconContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: ${color.gray400};
+    color: ${(props) => props.theme.primary};
     text-decoration: none;
     align-self: strech;
   }
@@ -32,7 +32,7 @@ export const IconContainer = styled.div`
     font-size: 23px;
   }
   p {
-    color: #181725;
+    color: ${(props) => props.theme.primary};
     text-align: center;
     font-size: 12px;
     font-style: normal;
@@ -44,7 +44,7 @@ export const IconContainer = styled.div`
 export const CountStyle = styled.div`
   background-color: red;
   font-size: 0.7rem;
-  color: white;
+  color: ${color.white};
   width: 16px;
   height: 16px;
   border-radius: 100px;

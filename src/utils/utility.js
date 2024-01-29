@@ -92,5 +92,16 @@ export const getFromLocalStorage = (key) => {
  */
 export function currencyConverter(price, currency) {
   const newPrice = Number(price) * currency.valueToDoller;
-  return `${currency.symbol} ${Math.round(newPrice)} `;
+  return `${currency.symbol} ${newPrice.toFixed(2)} `;
+}
+
+export function checkOlderDate(date, month = 1) {
+  const today = new Date();
+  var diff = (today.getTime() - date.getTime()) / 1000;
+  diff = diff / (60 * 60 * 24 * 10 * 3);
+  var diffMonths = Math.abs(Math.round(diff));
+  if (diffMonths > month) {
+    return false;
+  }
+  return true;
 }

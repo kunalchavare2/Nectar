@@ -8,13 +8,15 @@ import {
 const Card = styled.div`
   color: ${(props) => props.theme.primary};
   border-radius: 1.125rem;
-  width: ${(props) =>
-    props.style && (props.style.width ? props.style.width : "fit-content")};
+  width: ${(props) => props.cardstyle.width};
   border: 1px solid ${color.gray100};
+  background-color: ${(props) => props.theme.cardBackground};
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
   .card-img {
     width: 70%;
   }
@@ -24,6 +26,7 @@ const Card = styled.div`
     height: 100%;
     object-fit: contain;
     aspect-ratio: 3/3;
+    /* mix-blend-mode: lighten; */
   }
 
   .card-content {
@@ -57,7 +60,7 @@ const Card = styled.div`
   }
 
   .card-quantity {
-    color: ${(props) => props.theme.secondary};
+    color: ${(props) => props.theme.primary};
     font-size: ${fontSize.captionRegular};
     font-style: normal;
     font-weight: ${fontWeight.regular};
@@ -74,7 +77,7 @@ const Card = styled.div`
   }
 
   .card-price {
-    color: #181725;
+    color: ${(props) => props.theme.primary};
     font-size: ${fontSize.titleSmall};
     font-style: normal;
     font-weight: ${fontWeight.semiBold};
@@ -86,6 +89,16 @@ const Card = styled.div`
 `;
 
 export default Card;
+
+export const TagWrapper = styled.span`
+  display: inline-block;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
 
 const commomCardStyles = css`
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.styled.js";
 import HeaderStyle, {
   HeaderNavBtnStyle,
@@ -14,11 +14,15 @@ import {
   IoSearchOutline,
 } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import { ThemeDispatcher } from "../../../Theme/Theme.jsx";
+import { ThemeData } from "../../../Theme/ThemeData.js";
 
 const Header = ({ searchToggle }) => {
   const user = useSelector((state) => state.user);
   const cartCount = user.cart.cartCount;
   const wishlistCount = user.wishlist.wishlistItems.length;
+  const chnageTheme = useContext(ThemeDispatcher);
+
   return (
     <HeaderStyle>
       <HeaderWrapper>
@@ -41,6 +45,16 @@ const Header = ({ searchToggle }) => {
         </HeaderNavStyle>
 
         <HeaderNavBtnStyle>
+          <input
+            type="checkbox"
+            onChange={(ev) => {
+              if (ev.target.checked) {
+                chnageTheme(ThemeData.dark);
+              } else {
+                chnageTheme(ThemeData.light);
+              }
+            }}
+          />
           <SearchBtnStyle onClick={searchToggle}>
             <IoSearchOutline />
           </SearchBtnStyle>

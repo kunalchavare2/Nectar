@@ -34,7 +34,7 @@ const CheckboxStyle = styled.label`
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    color: #181725;
+    color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
     font-style: normal;
     font-weight: ${fontWeight.regular};
@@ -56,7 +56,7 @@ const CheckboxStyle = styled.label`
     margin: 3px 11px 3px 1px;
     border: solid 2px;
     /* Safari */
-    border-color: ${color.black + opacity(60)};
+    border-color: ${(props) => props.theme.primary + opacity(60)};
     border-radius: 2px;
     width: 18px;
     height: 18px;

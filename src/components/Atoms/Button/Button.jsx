@@ -60,7 +60,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   transparent: false,
-  backgroundColor: "#53B175", // Set a default background color
+  // backgroundColor: "#53B175", // Set a default background color
   disabled: false,
   onClick: undefined,
   price: null,

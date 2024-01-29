@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cross from "../../../assets/icons/cross.svg";
-import { Inputbar, Button, SearchStyle } from "./Search.styled";
+import { Inputbar, Button, SearchStyle, IconBtn } from "./Search.styled";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search_2.svg";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const Search = ({
-  placeholderValue,
-  searchHandler,
-  searchRef,
-  ...props
-}) => {
+const Search = ({ placeholderValue, searchHandler, searchRef, ...props }) => {
   const [isValue, setisValue] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const onChangeHandler = (e) => {
@@ -41,9 +37,7 @@ const Search = ({
       />
 
       {isValue ? (
-        <Button onClick={handleClick}>
-          <img src={cross} alt="cross" />
-        </Button>
+        <IconBtn icon={<IoIosCloseCircleOutline />} onClick={handleClick} />
       ) : null}
     </SearchStyle>
   );

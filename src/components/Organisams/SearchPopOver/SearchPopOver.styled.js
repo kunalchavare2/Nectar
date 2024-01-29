@@ -4,6 +4,7 @@ import {
   device,
   fontSize,
   fontWeight,
+  opacity,
 } from "../../../utils/constant/style-const";
 
 const SearchPopOverStyle = styled.div`
@@ -14,10 +15,10 @@ const SearchPopOverStyle = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2%;
-  background-color: white;
+  background-color: ${(props) => props.theme.body};
 
   .searchBarStyle {
-    width: 80%;
+    width: 100%;
     input {
       font-size: 1.1rem;
     }
@@ -50,7 +51,7 @@ export const SearchResultStyle = styled.div`
   }
 
   @media ${device.tablet} {
-    background-color: white;
+    background-color: ${(props) => props.theme.body};
     height: 100%;
   }
 `;
@@ -79,7 +80,7 @@ export const CategoryWrapperStyle = styled.div`
 export const ProductWrapperStyle = styled.div`
   width: 100%;
   height: fit-content;
-  background-color: white;
+  background-color: ${(props) => props.theme.primary};
 `;
 export const SeeAllButtonStyle = styled.button`
   border: transparent;
@@ -95,7 +96,7 @@ export const SeeAllButtonStyle = styled.button`
   border-radius: 0.2rem;
 
   &:hover {
-    background-color: ${`${color.green100}26`};
+    background-color: ${`${color.green100 + opacity(26)}`};
   }
 `;
 
@@ -106,10 +107,10 @@ export const CloseButtonStyle = styled.button`
   font-size: ${fontSize.headingSmall};
   background: transparent;
   border: none;
-  color: ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.primary};
 
   &:hover {
-    color: ${color.black500};
+    color: ${(props) => props.theme.denger};
   }
 `;
 
