@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import UserData from '../../Molecules/UserData/UserData';
 import order from '../../../assets/icons/order.svg';
 import mydetails from '../../../assets/icons/mydetails.svg';
