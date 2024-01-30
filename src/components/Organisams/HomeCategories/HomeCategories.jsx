@@ -15,7 +15,8 @@ import { addToCart } from "../../../store/Slice/UserSlice/UserSlice";
 import Category from "../../Molecules/Category/Category";
 import { useNavigate } from "react-router";
 import { checkOlderDate, createQueryString } from "../../../utils/utility";
-import { style } from "styled-components";
+import { PRODUCTS_ROUTE } from "../../../utils/constant/routes-cont";
+
 const HomeCategories = (props) => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
@@ -24,15 +25,17 @@ const HomeCategories = (props) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchProducts());
+  // }, [dispatch]);
+
+
   const addToCartHandler = (ev, id) => {
     dispatch(addToCart({ id: id, quantity: 1 }));
   };
   const categoryClickHandler = (id) => {
     let queryString = createQueryString({ category: id });
-    navigate(`/app/products${queryString}`);
+    navigate(`${PRODUCTS_ROUTE + queryString}`, { replace: true });
   };
   return (
     <>

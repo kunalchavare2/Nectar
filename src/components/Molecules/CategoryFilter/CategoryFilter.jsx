@@ -3,6 +3,7 @@ import Checkbox from "../../Atoms/Checkbox/Checkbox";
 import { useLocation, useNavigate } from "react-router";
 import { createQueryString, queryStringToObject } from "../../../utils/utility";
 import CategoryFilterStyle from "./CategoryFilter.styled";
+import { categories } from "../../../utils/constant/app-const";
 
 const CategoryFilter = ({ getCategories }) => {
   const location = useLocation();
@@ -19,23 +20,14 @@ const CategoryFilter = ({ getCategories }) => {
         setAppliedCategory(queryObj.category);
         setPramCategory(queryObj.category);
       }
+    } else {
+      setAppliedCategory([]);
+      setPramCategory([]);
     }
   }, [location]);
 
-  const categories = [
-    "Beverages",
-    "Dairy & Eggs",
-    "Fresh Fruits & Vegetable",
-    "Meat & Fish",
-    "Bakery & Snacks",
-    "Cooking Oil & Ghee",
-  ];
-
   const checkValue = (ele) => {
-    // console.log(paramCategory);
-    // console.log(ele);
     const value = paramCategory.includes(ele);
-    // console.log(value);
     return value;
   };
 

@@ -1,3 +1,6 @@
+
+
+
 export const currency = {
   doller: {
     symbol: "\u0024",
@@ -14,3 +17,14 @@ export const tagsColor = {
   bestseller: "#e9c46a",
   new: "#118ab2",
 };
+
+export const categories = [
+  "Beverages",
+  "Dairy & Eggs",
+  "Fresh Fruits & Vegetable",
+  "Meat & Fish",
+  "Bakery & Snacks",
+  "Cooking Oil & Ghee",
+];
+
+export const tags = ["Exclusive", "bestseller", "new"];

@@ -12,19 +12,18 @@ import { useSelector } from "react-redux";
 
 const PriceFilter = ({ getPrice }) => {
   const priceValue = useRef({ minValue: 0, maxValue: 16 });
-  const [priceState, setPriceState] = useState({ minValue: 0, maxValue: 6 });
+  const [priceState, setPriceState] = useState({ minValue: 0, maxValue: 16 });
   const appconfig = useSelector((state) => state.appconfig);
   const location = useLocation();
 
   useEffect(() => {
-    if (location.search.length) {
+    if (location.search) {
       const queryObj = queryStringToObject(location.search, {
         maxPrice: 0,
-        minPrice: 6,
+        minPrice: 16,
       });
 
       if ("maxPrice" in queryObj && "minPrice" in queryObj) {
-        console.log(queryObj);
         priceValue.current = {
           minValue: Number(queryObj.minPrice),
           maxValue: Number(queryObj.maxPrice),
@@ -35,8 +34,14 @@ const PriceFilter = ({ getPrice }) => {
           maxValue: Number(queryObj.maxPrice),
         });
       }
+    } else {
+      priceValue.current = {
+        minValue: 0,
+        maxValue: 16,
+      };
+      setPriceState({ minValue: 0, maxValue: 16 });
     }
-  }, []);
+  }, [location]);
 
   const handleInput = (e) => {
     if (

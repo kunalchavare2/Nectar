@@ -8,13 +8,15 @@ import Heading from "../../Atoms/Heading/Heading";
 import Button from "../../Atoms/Button/Button";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { ORDERS_ROUTE } from "../../../utils/constant/routes-cont";
 
 const OrderPlaced = ({ showSuccess, setShowSuccess }) => {
   const navigate = useNavigate();
+
   const navigateToOrders = () => {
     setShowSuccess(false);
     //Navigate to Orders page
-    navigate("../orders", { replace: true });
+    navigate(ORDERS_ROUTE, { replace: true });
   };
 
   return (

@@ -9,12 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/Molecules/ProductCard/ProductCard";
 import { addToCart } from "../../store/Slice/UserSlice/UserSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-import { queryStringToObject } from "../../utils/utility";
+import { checkOlderDate, queryStringToObject } from "../../utils/utility";
 import SearchBar from "./../../components/Molecules/SearchBar/SearchBar";
 import { sortList } from "../../utils/sort";
 import Loading from "../../components/Molecules/Loading/Loading";
+import { PRODUCT_DETAIL_ROUTE } from "../../utils/constant/routes-cont";
 
-const ProductListPage = () => {
+const ProductListPage = ({ showFilter, setShowFilter }) => {
   const dispatch = useDispatch();
   const [loadingProducts, setLoadingProducts] = useState(false);
   const { products, loading, error } = useSelector((state) => state.product);
@@ -60,6 +61,7 @@ const ProductListPage = () => {
       minPrice: null,
       maxPrice: null,
       sort: "",
+      tags: [],
     });
 
     let filterProductsTemp = products;
@@ -76,6 +78,20 @@ const ProductListPage = () => {
     if ("category" in queryObj) {
       filterProductsTemp = filterProductsTemp.filter((product) => {
         return queryObj.category.includes(product.category);
+      });
+    }
+
+    if ("tags" in queryObj) {
+      filterProductsTemp = filterProductsTemp.filter((product) => {
+        const filterTags = queryObj.tags.filter((tag) => {
+          let newTags = [...product.tags];
+          const created = new Date(product.createdAt);
+          if (checkOlderDate(created)) {
+            newTags.push("new");
+          }
+          return newTags.includes(tag);
+        });
+        return filterTags.length > 0;
       });
     }
 
@@ -103,7 +119,7 @@ const ProductListPage = () => {
   };
 
   const openCardHandler = (id) => {
-    navigate(`/app/product/${id}`);
+    navigate(PRODUCT_DETAIL_ROUTE + id);
   };
 
   if (loadingProducts) {
@@ -114,8 +130,7 @@ const ProductListPage = () => {
   }
   return (
     <ProductListPageStyle>
-      <SearchBar />
-
+      <SearchBar showFilter={showFilter} setShowFilter={setShowFilter} />
       <Specifiedproductlist>
         {filterProducts.map((prod) => {
           return (

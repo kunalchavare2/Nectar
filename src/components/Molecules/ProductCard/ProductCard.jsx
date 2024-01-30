@@ -50,9 +50,10 @@ const ProductCard = ({
   return (
     <Card $layout={layout} cardstyle={style} {...props} onClick={handleClick}>
       <TagWrapper>
-        {newTags.reverse().map((tag, index) => (
-          <Tag label={tag} color={tagsColor[tag]} />
-        ))}
+        {layout === "card" &&
+          newTags
+            .reverse()
+            .map((tag, index) => <Tag label={tag} color={tagsColor[tag]} />)}
       </TagWrapper>
       <div className={"card-img"}>
         <img src={image} alt={title} />

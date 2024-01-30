@@ -17,6 +17,10 @@ import { IoClose } from "react-icons/io5";
 import Info from "../../Molecules/Info/Info";
 import { ReactComponent as EmptyBox } from "../../../assets/images/empty-box.svg";
 import { createQueryString, queryStringToObject } from "../../../utils/utility";
+import {
+  PRODUCTS_ROUTE,
+  PRODUCT_DETAIL_ROUTE,
+} from "../../../utils/constant/routes-cont";
 
 const SearchPopOver = ({ isOpen, setIsOpen }) => {
   const products = useSelector((state) => state.product.products);
@@ -42,18 +46,18 @@ const SearchPopOver = ({ isOpen, setIsOpen }) => {
   };
   const navigateToProduct = (id) => {
     exitBtnHandler();
-    navigate(`/app/product/${id}`);
+    navigate(PRODUCT_DETAIL_ROUTE + id);
   };
 
   const categoryClickHandler = (id) => {
     exitBtnHandler();
     let queryString = createQueryString({ category: [id] });
-    navigate(`/app/products${queryString}`);
+    navigate(PRODUCTS_ROUTE + queryString, { replace: true });
   };
 
   const showAllProducts = () => {
     exitBtnHandler();
-    navigate(`/app/products?search=${searchValue.replaceAll(" ", "")}`);
+    navigate(PRODUCTS_ROUTE + `?search=${searchValue.replaceAll(" ", "")}`);
   };
 
   useEffect(() => {

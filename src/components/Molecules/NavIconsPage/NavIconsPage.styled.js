@@ -12,6 +12,7 @@ export const PageIconsContainer = styled.div`
   width: 100%;
   height: fit-content;
   padding: 0.5rem 0;
+  z-index: 700;
 
   @media ${device.tablet} {
     display: none;
