@@ -4,6 +4,7 @@ import { sortTypes } from "../../../utils/constant/global-const";
 import SelectMenu from "../../Atoms/SelectMenu/SelectMenu";
 import { useLocation, useNavigate } from "react-router";
 import { createQueryString, queryStringToObject } from "../../../utils/utility";
+import { PRODUCTS_ROUTE } from "../../../utils/constant/routes-cont";
 
 const Sort = ({ getSort, ...props }) => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const Sort = ({ getSort, ...props }) => {
     };
 
     const queryString = createQueryString({ ...newQueryObj });
-    navigate(`/app/products${queryString}`, { replace: true });
+    navigate(`${PRODUCTS_ROUTE + queryString}`, { replace: true });
   };
 
   return (

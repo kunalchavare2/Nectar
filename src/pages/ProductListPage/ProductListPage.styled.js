@@ -22,5 +22,9 @@ export const PageHeader = styled.div`
 `;
 
 export const ProductListPageStyle = styled.div`
-  /* margin-top: 3rem; */
+  margin-top: 3rem;
+
+  @media ${device.tablet} {
+    margin: unset;
+  }
 `;

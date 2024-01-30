@@ -9,7 +9,7 @@ export function createQueryString(queryObject = {}) {
   let queryString = Object.keys(queryObject)
     .filter(
       (key) =>
-        queryObject[key] &&
+        queryObject[key].toString() &&
         !(Array.isArray(queryObject[key]) && !queryObject[key].length)
     )
     .map((key) => {

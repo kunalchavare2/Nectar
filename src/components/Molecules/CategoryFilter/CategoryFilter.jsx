@@ -3,11 +3,11 @@ import Checkbox from "../../Atoms/Checkbox/Checkbox";
 import { useLocation, useNavigate } from "react-router";
 import { createQueryString, queryStringToObject } from "../../../utils/utility";
 import CategoryFilterStyle from "./CategoryFilter.styled";
+import { categories } from "../../../utils/constant/app-const";
 
 const CategoryFilter = ({ getCategories }) => {
   const location = useLocation();
   const [appliedCategory, setAppliedCategory] = useState([]);
-  const [paramCategory, setPramCategory] = useState([]);
 
   useEffect(() => {
     if (location.search) {
@@ -17,25 +17,16 @@ const CategoryFilter = ({ getCategories }) => {
 
       if ("category" in queryObj) {
         setAppliedCategory(queryObj.category);
-        setPramCategory(queryObj.category);
+        // setPramCategory(queryObj.category);
       }
+    } else {
+      setAppliedCategory([]);
+      // setPramCategory([]);
     }
   }, [location]);
 
-  const categories = [
-    "Beverages",
-    "Dairy & Eggs",
-    "Fresh Fruits & Vegetable",
-    "Meat & Fish",
-    "Bakery & Snacks",
-    "Cooking Oil & Ghee",
-  ];
-
   const checkValue = (ele) => {
-    // console.log(paramCategory);
-    // console.log(ele);
-    const value = paramCategory.includes(ele);
-    // console.log(value);
+    const value = appliedCategory.includes(ele);
     return value;
   };
 
@@ -43,7 +34,7 @@ const CategoryFilter = ({ getCategories }) => {
     const id = ev.target.id;
     const value = ev.target.checked;
     let revisedArr = [];
-    console.log(revisedArr);
+
     if (value) {
       const index = appliedCategory.indexOf((category) => {
         return category === id;
@@ -57,7 +48,6 @@ const CategoryFilter = ({ getCategories }) => {
         return category !== id;
       });
     }
-    console.log(revisedArr);
 
     setAppliedCategory(revisedArr);
     if (getCategories) {

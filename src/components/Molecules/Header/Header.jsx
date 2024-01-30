@@ -16,6 +16,16 @@ import {
 import { useSelector } from "react-redux";
 import { ThemeDispatcher } from "../../../Theme/Theme.jsx";
 import { ThemeData } from "../../../Theme/ThemeData.js";
+import {
+  CART_ROUTE,
+  DEFAULT_SEARCH_PARAMS,
+  HOME_ROUTE,
+  ORDERS_ROUTE,
+  PRODUCTS_ROUTE,
+  PROFILE_ROUTE,
+  WISHLIST_ROUTE,
+} from "../../../utils/constant/routes-cont.js";
+import { ReactComponent as ProfileIcons } from "../../../assets/icons/marathi-woman.svg";
 
 const Header = ({ searchToggle }) => {
   const user = useSelector((state) => state.user);
@@ -28,12 +38,17 @@ const Header = ({ searchToggle }) => {
       <HeaderWrapper>
         <Logo showText={true} />
         <HeaderNavStyle>
-          <NavIcon icon={""} text="Home" link="/app/home" hideIcon={true} />
-          <NavIcon icon={""} text="Orders" link="/app/orders" hideIcon={true} />
+          <NavIcon icon={""} text="Home" link={HOME_ROUTE} hideIcon={true} />
+          <NavIcon
+            icon={""}
+            text="Orders"
+            link={ORDERS_ROUTE}
+            hideIcon={true}
+          />
           <NavIcon
             icon={""}
             text="Products"
-            link="/app/products"
+            link={PRODUCTS_ROUTE + DEFAULT_SEARCH_PARAMS}
             hideIcon={true}
           />
           <NavIcon
@@ -60,14 +75,15 @@ const Header = ({ searchToggle }) => {
           </SearchBtnStyle>
           <NavIcon
             icon={<IoCartOutline />}
-            link="/app/cart"
+            link={CART_ROUTE}
             count={cartCount}
           />
           <NavIcon
             icon={<IoHeartOutline />}
-            link="/app/wishlist"
+            link={WISHLIST_ROUTE}
             count={wishlistCount}
           />
+          <NavIcon icon={<ProfileIcons />} link={PROFILE_ROUTE} />
         </HeaderNavBtnStyle>
       </HeaderWrapper>
     </HeaderStyle>

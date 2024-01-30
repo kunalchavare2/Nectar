@@ -29,16 +29,30 @@ export const ContentStyle = styled.main`
   grid-template-columns:1fr;
   height: 100%;
   overflow: hidden;
+
+  .desktop-filter {
+    display: none;
+  }
+
+  .mobile-filter {
+  }
   @media ${device.tablet} {
     padding-top: 4rem;
     grid-template-columns: ${(props) =>
       props.$isShowFilter ? "300px 1fr" : "1fr"};
+
+    .desktop-filter {
+      display: block;
+    }
+    .mobile-filter {
+      display: none;
+    }
   }
 `;
 
 export const MainContentStyle = styled.div`
   height: inherit;
-  overflow: scroll;
+  overflow: auto;
   padding-bottom: 4rem;
 
   @media ${device.tablet} {

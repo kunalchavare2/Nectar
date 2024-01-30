@@ -8,6 +8,8 @@ import { checkOlderDate, currencyConverter } from "../../../utils/utility";
 import { style } from "styled-components";
 import Tag from "../../Atoms/Tag/Tag";
 import { tagsColor } from "../../../utils/constant/app-const";
+import Text from "../../Atoms/Text/Text";
+import Heading from "../../Atoms/Heading/Heading";
 
 const ProductCard = ({
   layout,
@@ -50,17 +52,18 @@ const ProductCard = ({
   return (
     <Card $layout={layout} cardstyle={style} {...props} onClick={handleClick}>
       <TagWrapper>
-        {newTags.reverse().map((tag, index) => (
-          <Tag label={tag} color={tagsColor[tag]} />
-        ))}
+        {layout === "card" &&
+          newTags
+            .reverse()
+            .map((tag, index) => <Tag label={tag} color={tagsColor[tag]} />)}
       </TagWrapper>
       <div className={"card-img"}>
         <img src={image} alt={title} />
       </div>
       <div className="card-content">
         <div className="card-titleWrapper">
-          <div className="card-title">{title}</div>
-          <div className="card-quantity">{quantity}</div>
+          <Heading className="card-title" label={title} />
+          <Text className="card-quantity" label={quantity} />
         </div>
         <div className="card-priceWrapper">
           {layout === "cart" && (

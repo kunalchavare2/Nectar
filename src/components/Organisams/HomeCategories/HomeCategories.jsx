@@ -15,7 +15,10 @@ import { addToCart } from "../../../store/Slice/UserSlice/UserSlice";
 import Category from "../../Molecules/Category/Category";
 import { useNavigate } from "react-router";
 import { checkOlderDate, createQueryString } from "../../../utils/utility";
-import { style } from "styled-components";
+import { PRODUCTS_ROUTE } from "../../../utils/constant/routes-cont";
+import Heading from "../../Atoms/Heading/Heading";
+import { fontSize } from "../../../utils/constant/style-const";
+
 const HomeCategories = (props) => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
@@ -24,21 +27,23 @@ const HomeCategories = (props) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
   const addToCartHandler = (ev, id) => {
     dispatch(addToCart({ id: id, quantity: 1 }));
   };
   const categoryClickHandler = (id) => {
     let queryString = createQueryString({ category: id });
-    navigate(`/app/products${queryString}`);
+    navigate(`${PRODUCTS_ROUTE + queryString}`, { replace: true });
   };
   return (
     <>
       <CategoryHeaders>
-        <Text type={"large"} label={text} tcolor="#000" />
-        <NavIcon icon={""} text="See all" link={linkto} hideIcon={true} />
+        <Heading type={fontSize.titleLarge} label={text} tcolor="#000" />
+        <NavIcon
+          icon={""}
+          text="See all"
+          link={`${linkto}?tags=${tag}`}
+          hideIcon={true}
+        />
       </CategoryHeaders>
       <Wrapper>
         {isshowGroceries ? (
@@ -64,6 +69,7 @@ const HomeCategories = (props) => {
               if (checkOlderDate(created)) {
                 newTags.push("new");
               }
+
               if (newTags.includes(tag)) {
                 return (
                   <div>

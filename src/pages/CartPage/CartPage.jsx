@@ -37,7 +37,6 @@ const CartPage = () => {
   const removeFromCartHandler = (ev, id) => {
     deleteId.current = id;
     setDeleteModal(true);
-    // dispatch(removeFromCart(id));
   };
 
   const removeHandler = (isdelete) => {
@@ -55,6 +54,7 @@ const CartPage = () => {
     const minDelivery = 2;
     const discount = 10;
     const tax = 18;
+
     const finalPrice = {
       totalPrice: 0,
       bagDiscount: 0,
@@ -64,6 +64,7 @@ const CartPage = () => {
     };
 
     // Calulate the total price
+    console.log(cart.cartItems);
     cart.cartItems.forEach((cartItem) => {
       const getProduct = product.products.find(
         (prod) => prod.id === cartItem.id

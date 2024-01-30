@@ -1,54 +1,64 @@
-import { Navigate, createBrowserRouter, useNavigate } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CartPage from "./pages/CartPage/CartPage";
 import Layout from "./layout/Layout";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ProductListPage from "./pages/ProductListPage/ProductListPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
-import { useDispatch } from "react-redux";
-import store from "./store/Store";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import {
+  BASE_ROUTE,
+  CART_ROUTE,
+  HOME_ROUTE,
+  ORDERS_ROUTE,
+  PRODUCTS_ROUTE,
+  PRODUCT_DETAIL_ROUTE,
+  PROFILE_ROUTE,
+  WISHLIST_ROUTE,
+} from "./utils/constant/routes-cont";
+import UserDataPage from "./pages/UserDataPage/UserDataPage";
 
 const routes = [
   {
     path: "/",
-    element: <Navigate to="/app/home" replace={true} />,
+    element: <Navigate to={HOME_ROUTE} replace={true} />,
   },
   {
-    path: "/app",
-
+    path: BASE_ROUTE,
     element: <Layout />,
-    //   loader: rootLoader,
     children: [
       {
-        path: "/app/cart",
+        path: CART_ROUTE,
         element: <CartPage />,
-        //   loader: teamLoader,
       },
       {
-        path: "/app/wishlist",
+        path: WISHLIST_ROUTE,
         element: <WishlistPage />,
         //   loader: teamLoader,
       },
       {
-        path: "/app/home",
+        path: HOME_ROUTE,
         element: <App />,
         //   loader: teamLoader,
       },
       {
-        path: "/app/orders",
+        path: ORDERS_ROUTE,
         element: <OrdersPage />,
         //   loader: teamLoader,
       },
       {
-        path: "/app/products",
+        path: PRODUCTS_ROUTE,
         element: <ProductListPage />,
         //   loader: teamLoader,
       },
       {
-        path: "/app/product/:id",
+        path: PRODUCT_DETAIL_ROUTE,
         element: <ProductDetailsPage />,
+      },
+      {
+        path: PROFILE_ROUTE,
+        element: <UserDataPage />,
       },
     ],
   },

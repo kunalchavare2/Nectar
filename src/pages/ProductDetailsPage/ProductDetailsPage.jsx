@@ -28,6 +28,7 @@ import {
   removeFromWishList,
   updateCartItemQuantity,
 } from "../../store/Slice/UserSlice/UserSlice";
+import { CART_ROUTE } from "../../utils/constant/routes-cont";
 
 const ProductDetailsPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -70,7 +71,7 @@ const ProductDetailsPage = () => {
     if (!isAddedToCart) {
       dispatch(addToCart({ id: productId, quantity: quantity }));
     } else {
-      navigate("/app/cart");
+      navigate(CART_ROUTE);
     }
   };
   const getCategoryColor = (category) => {
