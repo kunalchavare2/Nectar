@@ -8,7 +8,6 @@ import { categories } from "../../../utils/constant/app-const";
 const CategoryFilter = ({ getCategories }) => {
   const location = useLocation();
   const [appliedCategory, setAppliedCategory] = useState([]);
-  const [paramCategory, setPramCategory] = useState([]);
 
   useEffect(() => {
     if (location.search) {
@@ -18,16 +17,16 @@ const CategoryFilter = ({ getCategories }) => {
 
       if ("category" in queryObj) {
         setAppliedCategory(queryObj.category);
-        setPramCategory(queryObj.category);
+        // setPramCategory(queryObj.category);
       }
     } else {
       setAppliedCategory([]);
-      setPramCategory([]);
+      // setPramCategory([]);
     }
   }, [location]);
 
   const checkValue = (ele) => {
-    const value = paramCategory.includes(ele);
+    const value = appliedCategory.includes(ele);
     return value;
   };
 
@@ -35,7 +34,7 @@ const CategoryFilter = ({ getCategories }) => {
     const id = ev.target.id;
     const value = ev.target.checked;
     let revisedArr = [];
-    console.log(revisedArr);
+
     if (value) {
       const index = appliedCategory.indexOf((category) => {
         return category === id;
@@ -49,7 +48,6 @@ const CategoryFilter = ({ getCategories }) => {
         return category !== id;
       });
     }
-    console.log(revisedArr);
 
     setAppliedCategory(revisedArr);
     if (getCategories) {

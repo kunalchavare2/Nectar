@@ -8,7 +8,6 @@ import { useLocation } from "react-router";
 const TagsFilter = ({ getTags }) => {
   const location = useLocation();
   const [appliedTags, setAppliedTags] = useState([]);
-  const [paramTags, setPramTags] = useState([]);
 
   useEffect(() => {
     if (location.search) {
@@ -16,20 +15,16 @@ const TagsFilter = ({ getTags }) => {
         tags: [],
       });
 
-      console.log(queryObj);
-
       if ("tags" in queryObj) {
         setAppliedTags(queryObj.tags);
-        setPramTags(queryObj.tags);
       }
     } else {
       setAppliedTags([]);
-      setPramTags([]);
     }
   }, [location]);
 
   const checkValue = (ele) => {
-    const value = paramTags.includes(ele);
+    const value = appliedTags.includes(ele);
     return value;
   };
 
@@ -53,6 +48,7 @@ const TagsFilter = ({ getTags }) => {
     }
 
     setAppliedTags(revisedArr);
+    
     if (getTags) {
       getTags(revisedArr);
     }

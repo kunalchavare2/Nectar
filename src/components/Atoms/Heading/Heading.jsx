@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import HeadingTypes from "./Heading.styled";
 
-const Heading = ({ type, label, tcolor }) => {
-  return <HeadingTypes size={type}>{label}</HeadingTypes>;
+const Heading = ({ type, label, tcolor, ...props }) => {
+  return (
+    <HeadingTypes size={type} {...props}>
+      {label}
+    </HeadingTypes>
+  );
 };
 Heading.propTypes = {
   type: PropTypes.oneOf(["small", "medium", "large"]),

@@ -15,7 +15,14 @@ const FilterComp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const [filterState, setFilterState] = useState({});
+  const [filterState, setFilterState] = useState({
+    maxPrice: 16,
+    minPrice: 0,
+    category: [],
+    search: "",
+    sort: "Name",
+    tags: [],
+  });
 
   useEffect(() => {
     if (location.search.length) {
@@ -42,7 +49,6 @@ const FilterComp = () => {
     });
   };
   const getTagsHandler = (tagArr) => {
-    console.log(filterState);
     setFilterState((prev) => {
       return { ...prev, tags: tagArr };
     });
@@ -60,7 +66,7 @@ const FilterComp = () => {
     if (location.search.length > 1 && !filterState.category && !queryString) {
       queryString = location.search;
     }
-    navigate(`${PRODUCTS_ROUTE + queryString}`, { replace: true });
+    navigate(PRODUCTS_ROUTE + queryString, { replace: true });
   }, [filterState]);
 
   return (

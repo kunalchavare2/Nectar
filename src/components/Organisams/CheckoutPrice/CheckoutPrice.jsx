@@ -76,7 +76,14 @@ const CheckoutPrice = ({ checkoutData, showOrderModal, setShowOrderModal }) => {
             appconfig.currentCurrency
           )}
         />
-        <Button label={"Place Order"} onClick={onPlaceOrderHandler} />
+        <Button
+          label={"Place Order"}
+          onClick={onPlaceOrderHandler}
+          price={currencyConverter(
+            checkoutData.finalAmount,
+            appconfig.currentCurrency
+          )}
+        />
       </CheckoutPriceStyle>
     </>
   );

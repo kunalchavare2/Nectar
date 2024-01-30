@@ -19,8 +19,8 @@ const PriceFilter = ({ getPrice }) => {
   useEffect(() => {
     if (location.search) {
       const queryObj = queryStringToObject(location.search, {
-        maxPrice: 0,
-        minPrice: 16,
+        minPrice: 0,
+        maxPrice: 16,
       });
 
       if ("maxPrice" in queryObj && "minPrice" in queryObj) {

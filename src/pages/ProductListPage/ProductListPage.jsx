@@ -29,7 +29,7 @@ const ProductListPage = ({ showFilter, setShowFilter }) => {
       if (location.search.length > 1) {
         setTimeout(() => {
           filterProductsHandler(location.search);
-        }, 1000);
+        }, 100);
       } else {
         setFilterProducts(products);
         setLoadingProducts(false);

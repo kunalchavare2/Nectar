@@ -40,7 +40,6 @@ function App() {
         tag="bestseller"
         isshowGroceries={false}
       />
-      {/* <UserDataPage /> */}
       <Footer />
     </>
   );

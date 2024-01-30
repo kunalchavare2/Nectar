@@ -14,12 +14,15 @@ import { v4 as uuidv4 } from "uuid";
 const OrdersPage = () => {
   const orders = useSelector((state) => state.orders.orders);
   const appconfig = useSelector((state) => state.appconfig);
-  const date = new Date();
-  const presentDate = date.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
+
+  const formatDate = (date) => {
+    const presentDate = date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+    return presentDate;
+  };
   console.log(orders);
 
   return (
@@ -28,12 +31,13 @@ const OrdersPage = () => {
 
       {orders.map((item) => {
         const id = uuidv4();
+        const date = new Date(item.id);
         return (
           <OrderContianer key={id}>
             <OrderedList>
               <OrderedItem>
                 <Text label="Order Placed" type="medium" />
-                <Text label={presentDate} type="small" />
+                <Text label={formatDate(date)} type="small" />
               </OrderedItem>
               <OrderedItem>
                 <Text label={"TotalPrice"} type="medium" />
@@ -52,7 +56,7 @@ const OrdersPage = () => {
                 <Text label="Ram" type="small" />
               </OrderedItem>
             </OrderedList>
-            <OrderedItem >
+            <OrderedItem>
               <Text label="Order ID" type="medium" />
               <Text label={id} type="small" />
             </OrderedItem>

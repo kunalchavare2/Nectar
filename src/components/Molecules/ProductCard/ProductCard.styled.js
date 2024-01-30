@@ -40,7 +40,9 @@ const Card = styled.div`
     justify-content: space-between;
     height: 100%;
   }
+/* .card-titleWrapper{
 
+} */
   .card-title {
     color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
@@ -74,6 +76,7 @@ const Card = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  
   }
 
   .card-price {

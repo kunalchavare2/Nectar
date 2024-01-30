@@ -5,6 +5,7 @@ import {
 } from "../../../utils/utility";
 import { LocalStorageKeys } from "../../../utils/constant/global-const";
 import store from "../../Store";
+import { Bounce, toast } from "react-toastify";
 
 const savedLocalData = getFromLocalStorage(LocalStorageKeys.userData);
 const initialState = savedLocalData
@@ -33,6 +34,17 @@ const UserSlice = createSlice({
       if (!item) {
         state.cart.cartItems.push(action.payload);
         state.cart.cartCount = state.cart.cartItems.length;
+        toast.success("Item Added to cart.", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     },
     // To remove the element from cart items

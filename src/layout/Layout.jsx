@@ -11,7 +11,9 @@ import FilterComp from "../components/Organisams/FilterComp/FilterComp";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../store/Slice/ProductSlice/ProductSlice";
 import useWindowDimensions from "../hooks/useWindowDimension";
-import { device } from "../utils/constant/style-const";
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { showFilter } from "../store/Slice/CommonStateSlice/CommonStateSlice";
 const Layout = () => {
   const location = useLocation();
@@ -68,6 +70,19 @@ const Layout = () => {
         </ContentStyle>
         <NavIconsPage />
         <SearchPopOver isOpen={showSearch} setIsOpen={setShowSearch} />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
       </LayoutStyle>
     </Theme>
   );
