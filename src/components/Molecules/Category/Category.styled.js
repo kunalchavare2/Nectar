@@ -5,7 +5,7 @@ import {
   opacity,
 } from "../../../utils/constant/style-const";
 export const Horizon = styled.span`
-  width: 248.187px;
+  width: 248px;
   height: 105px;
   flex-shrink: 0;
   border-radius: 18px;
@@ -16,20 +16,19 @@ export const Horizon = styled.span`
   border: 2px solid ${(props) => props.backgroundColor};
 `;
 export const HorizonImage = styled.img`
-  width: 71.898px;
-  height: 71.898px;
+  width: 45%;
+  aspect-ratio: 3/2;
 `;
 export const HorizonText = styled.div`
   color: ${(props) => props.theme.primary};
-  font-size: 20px;
+  font-size: ${fontSize.titleRegular};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${fontWeight.semiBold};
   line-height: normal;
   text-transform: capitalize;
 `;
 export const Card = styled.div`
   width: 100%;
-  /* height: 189.106px; */
   height: 100%;
   flex-shrink: 0;
   border-radius: 18px;
@@ -51,8 +50,7 @@ export const CardText = styled.div`
   text-transform: capitalize;
 `;
 export const CardImage = styled.img`
-  width: 103.049px;
-  /* height: 76.191px; */
+  width: 50%;
   flex-shrink: 0;
 `;
 export const StyledCard = styled.div`

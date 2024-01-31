@@ -1,21 +1,18 @@
 import styled, { css } from "styled-components";
+import { fontSize } from "../../../utils/constant/style-const";
 
 const TextTypes = styled.div`
   color: ${(props) => props.theme.primary};
   font-size: ${(props) => {
     switch (props.size) {
       case "small":
-        return "0.81rem";
-        break;
+        return fontSize.captionRegular;
       case "medium":
-        return "1rem";
-        break;
+        return fontSize.body;
       case "large":
-        return "1.25rem";
-        break;
+        return fontSize.titleSmall;
       default:
         return props.size;
-        break;
     }
   }};
 `;

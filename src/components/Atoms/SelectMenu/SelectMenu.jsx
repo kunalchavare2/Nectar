@@ -4,7 +4,13 @@ import { sortTypes } from "./../../../utils/constant/global-const";
 import { queryStringToObject } from "../../../utils/utility";
 import { useLocation } from "react-router";
 
-const SelectMenu = ({ list, onChange, defaultValue, ...props }) => {
+const SelectMenu = ({
+  list,
+  onChange,
+  defaultValue,
+  isObj = true,
+  ...props
+}) => {
   const [sort, setSort] = useState();
   const location = useLocation();
 
@@ -22,16 +28,26 @@ const SelectMenu = ({ list, onChange, defaultValue, ...props }) => {
     }
   }, [location]);
 
-  
+  const onChangeHandler = (ev) => {
+    setSort(ev.target.value);
+    onChange(ev);
+  };
+
   return (
     <SelectMenuStyle
       value={sort}
-      onChange={onChange}
+      onChange={onChangeHandler}
       defaultValue={defaultValue}
     >
-      {list.map((sort) => (
-        <option value={sortTypes[sort].name}>{sortTypes[sort].name}</option>
-      ))}
+      {list.map((sort) => {
+        if (isObj) {
+          return (
+            <option value={sortTypes[sort].name}>{sortTypes[sort].name}</option>
+          );
+        } else {
+          return <option value={sort}>{sort}</option>;
+        }
+      })}
     </SelectMenuStyle>
   );
 };

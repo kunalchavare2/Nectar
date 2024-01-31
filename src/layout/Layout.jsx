@@ -15,6 +15,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { showFilter } from "../store/Slice/CommonStateSlice/CommonStateSlice";
+import { fetchCategory } from "../store/Slice/CategorySlice/CategorySlice";
 const Layout = () => {
   const location = useLocation();
   const [showSearch, setShowSearch] = useState(false);

@@ -113,7 +113,10 @@ const UserSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      (action) => action.type.startsWith("user/"),
+      (action) => {
+        console.log(action);
+        return action.type.startsWith("user/");
+      },
       (state) => {
         saveToLocalStorage(current(state), LocalStorageKeys.userData);
       }

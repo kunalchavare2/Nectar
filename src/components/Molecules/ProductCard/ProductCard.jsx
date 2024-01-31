@@ -129,6 +129,7 @@ ProductCard.propTypes = {
   // function to handle cart change
   addCartHandler: PropTypes.func,
   style: PropTypes.any,
+  tags: PropTypes.array,
 };
 
 const product = {
@@ -136,6 +137,8 @@ const product = {
   title: "Default",
   price: 1.99,
   quantity: "355ml",
+  createdAt: "2024-01-28T14:30:00Z",
+  tags: ["Exclusive"],
   description:
     "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
   category: "Beverages",

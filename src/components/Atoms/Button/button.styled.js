@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
-import { color, fontWeight } from "../../../utils/constant/style-const";
+import {
+  color,
+  fontSize,
+  fontWeight,
+} from "../../../utils/constant/style-const";
 export const CheckoutContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -7,17 +11,16 @@ export const CheckoutContainer = styled.div`
   margin-left: 5px;
 `;
 export const PriceSpan = styled.div`
-  font-size: 12px;
+  font-size: ${fontSize.captionRegular};
   font-style: normal;
-  font-weight: 600;
-  line-height: 18px; /* 150% */
+  font-weight: ${fontWeight.semiBold};
   border-radius: 4px;
   background: ${(props) => props.theme.btnBackground};
   padding: 2px 5px;
 `;
 export const StyledButton = styled.button`
   color: ${(props) => props.theme.primary};
-  font-size: 18px;
+  font-size: ${fontSize.titleSmall};
   font-weight: ${fontWeight.semiBold};
   line-height: auto;
   border: 0;

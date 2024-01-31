@@ -9,7 +9,7 @@ export const TagStyle = styled.p`
   padding: 0.2rem;
   color: ${(prop) => prop.theme.primary};
   background-color: ${(prop) => prop.backColor + opacity(80)};
-  font-size: 0.7rem;
+  font-size: ${fontSize.captionExtraSmall};
   font-weight: ${fontWeight.medium};
   z-index: 200;
   width: fit-content;

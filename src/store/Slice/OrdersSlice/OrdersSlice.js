@@ -4,6 +4,7 @@ import {
   saveToLocalStorage,
 } from "../../../utils/utility";
 import { LocalStorageKeys } from "../../../utils/constant/global-const";
+import UserSlice from "../UserSlice/UserSlice";
 
 const savedLocalData = getFromLocalStorage(LocalStorageKeys.orders);
 const initialState = savedLocalData
@@ -32,10 +33,4 @@ const OrdersSlice = createSlice({
 });
 
 export default OrdersSlice.reducer;
-export const {
-  addToOrders,
-  //   removeFromCart,
-  //   updateCartItemQuantity,
-  //   addToWishList,
-  //   removeFromWishList,
-} = OrdersSlice.actions;
+export const { addToOrders } = OrdersSlice.actions;

@@ -17,11 +17,9 @@ const CategoryFilter = ({ getCategories }) => {
 
       if ("category" in queryObj) {
         setAppliedCategory(queryObj.category);
-        // setPramCategory(queryObj.category);
       }
     } else {
       setAppliedCategory([]);
-      // setPramCategory([]);
     }
   }, [location]);
 
