@@ -11,6 +11,7 @@ import {
 import Drawer from "../../components/Atoms/Drawer/Drawer.jsx";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router";
+import Heading from "../../components/Atoms/Heading/Heading.jsx";
 const UserDataPage = () => {
   const navigate = useNavigate();
   const styles = `
@@ -27,6 +28,7 @@ const UserDataPage = () => {
           userName="Afsar Hossen"
           userMailId="Imshuvo97@gmail.com"
         />
+    
         <UserDetails />
         <ButtonWrapper>
           <Button label="Log Out" />

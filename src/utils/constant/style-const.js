@@ -35,13 +35,11 @@ export const color = {
   orange100: "#F8A44C",
   orange200: "#F3603F",
 
-  denger:"#dc3545",
+  denger: "#dc3545",
 
   dark100: "#121212",
   dark200: "#282828",
   dark300: "#3f3f3f",
-
-
 };
 
 export const fontSize = {
@@ -64,6 +62,7 @@ export const fontSize = {
   // caption/subtitles font sizes
   captionRegular: "0.875rem",
   captionSmall: "0.75rem",
+  captionExtraSmall: "0.7rem",
 };
 
 const size = {
@@ -85,6 +84,10 @@ export const device = {
   laptopL: `(min-width: ${size.laptopL})`,
   desktop: `(min-width: ${size.desktop})`,
   desktopL: `(min-width: ${size.desktop})`,
+};
+
+export const boxshadow = {
+  appbar: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
 };
 
 export const opacity = (percentage) => {

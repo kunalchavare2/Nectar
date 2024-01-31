@@ -40,16 +40,14 @@ const Card = styled.div`
     justify-content: space-between;
     height: 100%;
   }
-/* .card-titleWrapper{
+  /* .card-titleWrapper{
 
 } */
   .card-title {
     color: ${(props) => props.theme.primary};
     font-size: ${fontSize.body};
     font-style: normal;
-    font-weight: ${600};
-    line-height: 1.125rem;
-    letter-spacing: 0.00625rem;
+    font-weight: ${fontWeight.semiBold};
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,7 +64,6 @@ const Card = styled.div`
     font-size: ${fontSize.captionRegular};
     font-style: normal;
     font-weight: ${fontWeight.regular};
-    line-height: 1.125rem;
     text-align: left;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -76,7 +73,6 @@ const Card = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
   }
 
   .card-price {
@@ -84,8 +80,6 @@ const Card = styled.div`
     font-size: ${fontSize.titleSmall};
     font-style: normal;
     font-weight: ${fontWeight.semiBold};
-    line-height: 1.125rem;
-    letter-spacing: 0.00625rem;
   }
 
   ${(props) => layoutStyle(props.$layout)}

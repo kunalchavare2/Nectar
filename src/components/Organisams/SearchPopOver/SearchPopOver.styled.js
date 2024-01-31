@@ -20,7 +20,7 @@ const SearchPopOverStyle = styled.div`
   .searchBarStyle {
     width: 100%;
     input {
-      font-size: 1.1rem;
+      font-size: ${fontSize.titleSmall};
     }
   }
 

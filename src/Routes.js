@@ -11,6 +11,7 @@ import {
   BASE_ROUTE,
   CART_ROUTE,
   HOME_ROUTE,
+  ID_ROUTE,
   ORDERS_ROUTE,
   PRODUCTS_ROUTE,
   PRODUCT_DETAIL_ROUTE,
@@ -53,7 +54,7 @@ const routes = [
         //   loader: teamLoader,
       },
       {
-        path: PRODUCT_DETAIL_ROUTE,
+        path: PRODUCT_DETAIL_ROUTE + ID_ROUTE,
         element: <ProductDetailsPage />,
       },
       {

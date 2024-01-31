@@ -29,6 +29,7 @@ import {
   updateCartItemQuantity,
 } from "../../store/Slice/UserSlice/UserSlice";
 import { CART_ROUTE } from "../../utils/constant/routes-cont";
+import { currencyConverter } from "../../utils/utility";
 
 const ProductDetailsPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -40,6 +41,10 @@ const ProductDetailsPage = () => {
   const isAddedToCart = UserData.cart.cartItems.find(
     (item) => item.id === productId
   );
+
+
+
+  const appconfig = useSelector((state) => state.appconfig);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -131,7 +136,12 @@ const ProductDetailsPage = () => {
                   onClick={() => quantityHandler("plus")}
                 />
               </ProductCount>
-              <Price>${ProductDetails.price}</Price>
+              <Price>
+                {currencyConverter(
+                  ProductDetails.price,
+                  appconfig.currentCurrency
+                )}
+              </Price>
             </ProductCountPrice>
             <ProductDescription>
               <Heading type="small" label="Product Details" />

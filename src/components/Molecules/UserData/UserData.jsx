@@ -3,7 +3,7 @@ import Heading from "../../Atoms/Heading/Heading";
 import PropTypes from "prop-types";
 import rightarrow from "../../../assets/icons/rightarrow.svg";
 import { UserDataItem, DataIconTitle, Button } from "./UserData.styled";
-const UserData = ({ icon, imgAltDetails, dataName, onClick }) => {
+const UserData = ({ icon, imgAltDetails, dataName, onClick, children }) => {
   return (
     <div onClick={onClick}>
       <UserDataItem>
@@ -15,6 +15,7 @@ const UserData = ({ icon, imgAltDetails, dataName, onClick }) => {
           <img src={rightarrow} alt="right arrow" />
         </Button>
       </UserDataItem>
+      {children}
     </div>
   );
 };

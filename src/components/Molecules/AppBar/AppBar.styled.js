@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { device } from "../../../utils/constant/style-const";
+import {
+  boxshadow,
+  device,
+  fontSize,
+  fontWeight,
+} from "../../../utils/constant/style-const";
 
 const AppBarStyle = styled.div`
   width: 100%;
-  /* position: absolute; */
-  top: 0;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.cardBackground};
   position: fixed;
   padding: 0.8rem;
   display: flex;
@@ -13,10 +16,10 @@ const AppBarStyle = styled.div`
   justify-content: center;
   z-index: 999;
   color: ${(props) => props.theme.primary};
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: ${fontSize.titleSmall};
+  font-weight: ${fontWeight.medium};
   height: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  box-shadow: ${boxshadow.appbar};
 
   .logo {
     position: absolute;
@@ -25,8 +28,8 @@ const AppBarStyle = styled.div`
   .backBtn {
     position: absolute;
     left: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: ${fontSize.titleSmall};
+    font-weight: ${fontWeight.semiBold};
     color: inherit;
     background-color: transparent;
     border: none;
@@ -47,7 +50,7 @@ export const IconBtnStyle = styled.button`
   background-color: transparent;
   outline: transparent;
   border: transparent;
-  font-size: 1.438rem;
+  font-size: ${fontSize.titleLarge};
   overflow: hidden;
   display: flex;
   align-items: center;

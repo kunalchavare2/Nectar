@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../../utils/constant/style-const";
+import { color, fontSize } from "../../../utils/constant/style-const";
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
@@ -29,12 +29,12 @@ export const IconContainer = styled.div`
   }
 
   .icon {
-    font-size: 23px;
+    font-size: ${fontSize.titleLarge};
   }
   p {
     color: ${(props) => props.theme.primary};
     text-align: center;
-    font-size: 12px;
+    font-size: ${fontSize.captionRegular};
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -42,17 +42,17 @@ export const IconContainer = styled.div`
 `;
 
 export const CountStyle = styled.div`
-  background-color: red;
-  font-size: 0.7rem;
+  background-color: ${color.denger};
+  font-size: ${fontSize.captionSmall};
   color: ${color.white};
   width: 16px;
   height: 16px;
-  border-radius: 100px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.2rem;
   position: absolute;
   top: -0.6rem;
-  right: -0.6rem;
+  right: -0.5rem;
 `;

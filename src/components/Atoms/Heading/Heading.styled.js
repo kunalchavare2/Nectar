@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components";
-import { fontWeight } from "../../../utils/constant/style-const";
+import { fontSize, fontWeight } from "../../../utils/constant/style-const";
 
 const HeadingTypes = styled.div`
   color: ${(props) => props.textcolor};
   background-color: transparent;
   font-weight: ${fontWeight.semiBold};
+
   font-size: ${(props) => {
     switch (props.size) {
       case "small":
-        return "1rem";
+        return fontSize.titleSmall;
       case "medium":
-        return "1.125rem";
+        return fontSize.titleMedium;
       case "large":
-        return "1.5rem";
+        return fontSize.titleLarge;
       default:
         return props.size;
     }

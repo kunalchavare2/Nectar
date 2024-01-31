@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../../utils/constant/style-const";
+import { color, fontSize } from "../../../utils/constant/style-const";
 import Button from "../../Atoms/Button/Button";
 
 const OrderPlaceStyle = styled.div`
@@ -25,13 +25,13 @@ export const IconButton = styled(Button)`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 1.5rem;
+  font-size: ${fontSize.titleLarge};
   padding: 0.3rem;
   width: fit-content;
   border: none;
   background-color: transparent;
   color: ${color.gray100};
-  font-size: 1.7rem;
+  font-size: ${fontSize.headingMedium};
   &:hover {
     color: ${color.blue500};
   }

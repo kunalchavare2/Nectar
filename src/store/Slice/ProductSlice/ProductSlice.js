@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import productData from "../../../data/product.json";
 
 const initialState = {
   loading: false,
