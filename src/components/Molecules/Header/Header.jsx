@@ -60,7 +60,7 @@ const Header = ({ searchToggle }) => {
         </HeaderNavStyle>
 
         <HeaderNavBtnStyle>
-          <input
+          {/* <input
             type="checkbox"
             onChange={(ev) => {
               if (ev.target.checked) {
@@ -69,7 +69,7 @@ const Header = ({ searchToggle }) => {
                 chnageTheme(ThemeData.light);
               }
             }}
-          />
+          /> */}
           <SearchBtnStyle onClick={searchToggle}>
             <IoSearchOutline />
           </SearchBtnStyle>

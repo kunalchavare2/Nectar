@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fontSize } from "../../../utils/constant/style-const";
+import { color, fontSize } from "../../../utils/constant/style-const";
 export const CarouselContianer = styled.div`
   position: relative;
   width: 100%;
@@ -23,9 +23,11 @@ export const CarouselContent = styled.div`
   text-align: center;
   top: 30%;
   left: 30%;
+  color: ${color.white};
   div {
     font-size: ${fontSize.headingMedium};
     padding-bottom: 1rem;
+    color: ${color.white};
   }
 `;
 
