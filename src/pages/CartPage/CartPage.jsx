@@ -20,6 +20,7 @@ import DeleteModal from "../../components/Organisams/DeleteModal/DeleteModal";
 
 const CartPage = () => {
   const product = useSelector((state) => state.product);
+  const user = useSelector((state) => state.authState);
   const cart = useSelector((state) => state.user.cart);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -31,6 +32,8 @@ const CartPage = () => {
     delivery: 0,
     finalAmount: 0,
   });
+
+  console.log(user);
 
   const dispatch = useDispatch();
 
@@ -108,6 +111,10 @@ const CartPage = () => {
       calculateFinalPrice();
     }
   }, []);
+
+  if (!user.isAuthenticated) {
+    return <h1>User Is not Authenticated</h1>;
+  }
 
   if (!cart.cartCount) {
     return (

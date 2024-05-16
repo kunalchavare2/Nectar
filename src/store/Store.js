@@ -5,6 +5,7 @@ import UserSlice from "./Slice/UserSlice/UserSlice";
 import OrdersSlice from "./Slice/OrdersSlice/OrdersSlice";
 import AppConfigSlice from "./Slice/AppConfig/AppConfig";
 import CommonStateSlice from "./Slice/CommonStateSlice/CommonStateSlice";
+import AuthSlice from "./Slice/AuthSlice/AuthSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     orders: OrdersSlice,
     appconfig: AppConfigSlice,
     commonstate: CommonStateSlice,
+    authState: AuthSlice,
   },
 });
 

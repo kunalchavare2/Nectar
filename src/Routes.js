@@ -19,11 +19,48 @@ import {
   WISHLIST_ROUTE,
 } from "./utils/constant/routes-cont";
 import UserDataPage from "./pages/UserDataPage/UserDataPage";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import store from "./store/Store";
+import AuthHoc from "./HOC/AuthHoc";
 
 const routes = [
   {
     path: "/",
-    element: <Navigate to={HOME_ROUTE} replace={true} />,
+    loader: async () => {
+      try {
+        const cookies = new Cookies();
+        let cookie = cookies.get("access_token");
+        console.log(cookie);
+        const response = await axios.post(
+          "http://localhost:3000/api/validate_user",
+          {},
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${cookie}`,
+            },
+          }
+        );
+
+        console.log(response.data);
+
+        return response.data;
+      } catch (error) {
+        return false;
+      }
+    },
+    element: <AuthHoc />,
+  },
+  {
+    path: "/login",
+    element: <AuthPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignUpPage />,
   },
   {
     path: BASE_ROUTE,
